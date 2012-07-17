@@ -10,7 +10,7 @@ set number		" Show line numbers
 syntax on		" Color syntax highlighting
 
 " Folding... use za to toggle... then zM,zR,zr,zm
-set foldenable		" Auto fold code by default
+set nofoldenable	" Auto fold code by default
 set foldmethod=indent	" fold based on indent
 "set foldnestmax=10	" deepest fold is 10 levels
 set foldlevel=1		" default fold level
