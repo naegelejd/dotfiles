@@ -54,7 +54,7 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
 " Number of spaces that a pre-existing tab is equal to.
 " For the amount of space used for a new tab use shiftwidth.
-au BufRead,BufNewFile *py,*pyw,*.c,*.cpp,*.h,*.html,*.php,*.css set tabstop=4 softtabstop=4
+au BufRead,BufNewFile *py,*pyw,*.c,*.cpp,*.cc,*.h,*.html,*.php,*.css set tabstop=4 softtabstop=4
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
@@ -71,7 +71,7 @@ fu Select_c_style()
         set noexpandtab
     en
 endf
-au BufRead,BufNewFile *.c,*.cpp,*.h call Select_c_style()
+au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h call Select_c_style()
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 " Use the below highlight group when displaying bad whitespace is desired.
@@ -80,12 +80,12 @@ highlight BadWhitespace ctermbg=red guibg=red
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
 " Python: 79 
 " C: 79
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.h set textwidth=79
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h set textwidth=79
 au BufRead *.txt set tw=78
 
 " Turn off settings in 'formatoptions' relating to comment formatting.
@@ -95,14 +95,14 @@ au BufRead *.txt set tw=78
 " - r : do not insert the comment leader when hitting <Enter> in insert mode
 " Python: not needed
 " C: prevents insertion of '*' at the beginning of every line in a comment
-au BufRead,BufNewFile *.c,*.cpp,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
+au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
 
 " Use UNIX (\n) line endings.
 " Only used for new files so as to not force existing files to change their
 " line endings.
 " Python: yes
 " C: yes
-au BufNewFile *.py,*.pyw,*.c,*.cpp,*.h set fileformat=unix
+au BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h set fileformat=unix
 
 " Delete trailing white space!!!
 fu DeleteTrailingWS()
