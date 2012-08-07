@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+path=$(dirname $(readlink -f $0))
+
+ln -s $path/colors/ ~/.vim/
+ln -s $path/autoload/ ~/.vim/
+ln -s $path/vimrc ~/.vimrc

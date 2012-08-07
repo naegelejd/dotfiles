@@ -9,15 +9,24 @@ set ruler		" Show the cursor position all the time
 set number		" Show line numbers
 syntax on		" Color syntax highlighting
 
-" Folding... use za to toggle... then zM,zR,zr,zm
+" Folding... use za to toggle... then zM,zR,zo,zc
 set nofoldenable	" Auto fold code by default
 set foldmethod=indent	" fold based on indent
 "set foldnestmax=10	" deepest fold is 10 levels
 set foldlevel=1		" default fold level
 
+" specify that the terminal emulator is 256 color
+"set t_Co=256 " do not set this manually
+set term=xterm-256color
 
-"colorscheme elflord
-"colorscheme darkblue
+" colorschemes should be in my git repo along with this vimrc
+set background=dark
+" colorscheme jellybeans
+
+if !has('gui_running')
+    let g:solarized_termcolors=256
+endif
+colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
 
 " Automatically indent based on file type: ``filetype indent on``
 " Keep indentation level from previous line: ``set autoindent``
@@ -153,18 +162,6 @@ cmap Tabe tabe
 
 " Yank from the cursor to the end of the line, to be consistent with D and C
 nnoremap Y y$
-
-""" Code folding options
-nmap <leader>f0 :set foldlevel=0<CR>
-nmap <leader>f1 :set foldlevel=1<CR>
-nmap <leader>f2 :set foldlevel=2<CR>
-nmap <leader>f3 :set foldlevel=3<CR>
-nmap <leader>f4 :set foldlevel=4<CR>
-nmap <leader>f5 :set foldlevel=5<CR>
-nmap <leader>f6 :set foldlevel=6<CR>
-nmap <leader>f7 :set foldlevel=7<CR>
-nmap <leader>f8 :set foldlevel=8<CR>
-nmap <leader>f9 :set foldlevel=9<CR>
 
 " clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
