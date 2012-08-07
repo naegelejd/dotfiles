@@ -15,19 +15,22 @@ set foldmethod=indent	" fold based on indent
 "set foldnestmax=10	" deepest fold is 10 levels
 set foldlevel=1		" default fold level
 
-" specify that the terminal emulator is 256 color
-"set t_Co=256 " do not set this manually
-set term=xterm-256color
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" if necessary, specify that the terminal emulator is 256 color
+"set t_Co=256
+"set term=xterm-256color
 
 " colorschemes should be in my git repo along with this vimrc
 set background=dark
-" colorscheme jellybeans
+colorscheme jellybeans
+"colorscheme desert256
 
-if !has('gui_running')
-    let g:solarized_termcolors=256
-endif
-colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
+"if !has('gui_running')
+"    let g:solarized_termcolors=256
+"endif
+"colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically indent based on file type: ``filetype indent on``
 " Keep indentation level from previous line: ``set autoindent``
 " ``set ai`` "Auto indent
@@ -121,24 +124,24 @@ let python_highlight_all=1
 " ------------
 " Always show the statusline
 set laststatus=2
-set statusline=%#comment#
+"set statusline=%#comment#
 set statusline+=%-3.3n\ 	" buffer number
-set statusline+=%#type#
+"set statusline+=%#type#
 set statusline+=%-0.20f\ 		" filename
-set statusline+=%#constant#
+"set statusline+=%#constant#
 set statusline+=%h%m%r%w	" buffnum,modified,read,write,help
-set statusline+=%#comment#
+"set statusline+=%#comment#
 set statusline+=[%{strlen(&ft)?&ft:'none'},	" filetype
 set statusline+=%{strlen(&fenc)?&fenc:&enc}, " file encoding
 set statusline+=%{&ff}] 	" file format
 set statusline+=%=      	" right align
-set statusline+=%#statement#
+"set statusline+=%#statement#
 "set statusline+=%b,0x%-8B	" current char
 "set statusline+=%{strftime(\"%c\",getftime(expand(\"%:p\")))} 	"file mtime
 "set statusline+=%-{strftime(\"%a\ %Y-%m-%d,\ %H:%M:%S\")}	"datetime
-set statusline+=%#identifier#
+"set statusline+=%#identifier#
 set statusline+=%10((%c,%l)%) 	" line and column
-set statusline+=%#comment#
+"set statusline+=%#comment#
 set statusline+=\ %p%%    	" percent through file (of cursor)
 
 " --------
