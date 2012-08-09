@@ -31,14 +31,6 @@ colorscheme jellybeans
 "colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Automatically indent based on file type: ``filetype indent on``
-" Keep indentation level from previous line: ``set autoindent``
-" ``set ai`` "Auto indent
-" ``set si`` "Smart indent
-
-" Folding based on indentation: ``set foldmethod=indent``
-" set foldmethod=indent
-
 " When editing a file, always jump to the last cursor position
 au BufReadPost *
 \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -55,16 +47,27 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 " a binary file when executing the text file): 
 "``set bomb``
 
-" Number of spaces that a pre-existing tab is equal to.
-" For the amount of space used for a new tab use shiftwidth.
-au BufRead,BufNewFile *py,*pyw,*.c,*.cpp,*.cc,*.h,*.html,*.php,*.css set tabstop=4 softtabstop=4
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Automatically indent based on file type: ``filetype indent on``
+" Keep indentation level from previous line: ``set autoindent``
+set autoindent
+set smartindent
+set smarttab
+set cindent
+" set cinoptions=.....
+
+set softtabstop=4
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
-" Python: 4 spaces
-" C: tabs (pre-existing files) or 4 spaces (new files)
-au BufRead,BufNewFile *.py,*pyw,*.html,*.php,*.css set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw,*.html,*.php,*.css set expandtab
+" Python:, et al: 4 spaces
+" C: tabs
+"au BufRead,BufNewFile *py,*.c,*.cpp,*.cc,*.h,*.lex,Makefile,*.rb,*.html,*.php,*.css set softtabstop=4 shiftwidth=4
+au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4
+au BufRead,BufNewFile *Makefile* set softtabstop=8 shiftwidth=8
+au BufRead,BufNewFile *.py,*.rb,*.html,*.php,*.css set expandtab
+au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.lex,Makefile* set noexpandtab
+
 fu Select_c_style()
     if search('^\t', 'n', 150)
         set shiftwidth=8
@@ -74,8 +77,7 @@ fu Select_c_style()
         set noexpandtab
     en
 endf
-au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h call Select_c_style()
-au BufRead,BufNewFile Makefile* set noexpandtab
+"au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.lex call Select_c_style()
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
