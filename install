@@ -2,6 +2,7 @@
 
 path=$(dirname $(readlink -n -f $0))
 
+mkdir -p ~/.vim
 ln -s $path/colors ~/.vim/
 ln -s $path/autoload ~/.vim/
 ln -s $path/autoload ~/.vim/plugin
