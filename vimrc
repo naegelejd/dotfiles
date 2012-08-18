@@ -53,10 +53,8 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 set autoindent
 set smartindent
 set smarttab
-set cindent
+" set cindent	" great for C coding
 " set cinoptions=.....
-
-set softtabstop=4
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
@@ -64,20 +62,9 @@ set softtabstop=4
 " C: tabs
 "au BufRead,BufNewFile *py,*.c,*.cpp,*.cc,*.h,*.lex,Makefile,*.rb,*.html,*.php,*.css set softtabstop=4 shiftwidth=4
 au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4
-au BufRead,BufNewFile *Makefile* set softtabstop=8 shiftwidth=8
+au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8
 au BufRead,BufNewFile *.py,*.rb,*.html,*.php,*.css set expandtab
 au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.lex,Makefile* set noexpandtab
-
-fu Select_c_style()
-    if search('^\t', 'n', 150)
-        set shiftwidth=8
-        set noexpandtab
-    el 
-        set shiftwidth=4
-        set noexpandtab
-    en
-endf
-"au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.lex call Select_c_style()
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
