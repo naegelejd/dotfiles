@@ -125,7 +125,7 @@ set statusline+=%{strlen(&fenc)?&fenc:&enc}, " file encoding
 set statusline+=%{&ff}] 	" file format
 set statusline+=%=      	" right align
 "set statusline+=%#statement#
-"set statusline+=%b,0x%-8B	" current char
+set statusline+=%b,0x%-8B	" current char
 "set statusline+=%{strftime(\"%c\",getftime(expand(\"%:p\")))} 	"file mtime
 "set statusline+=%-{strftime(\"%a\ %Y-%m-%d,\ %H:%M:%S\")}	"datetime
 "set statusline+=%#identifier#
