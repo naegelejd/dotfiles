@@ -53,7 +53,7 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 set autoindent
 set smartindent
 set smarttab
-" set cindent	" great for C coding
+set cindent	" great for C coding
 " set cinoptions=.....
 
 " What to use for an indent.
