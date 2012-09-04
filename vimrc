@@ -146,10 +146,9 @@ nnoremap j gj
 nnoremap k gk
 
 " Stupid shift key fixes
-cmap W w
 cmap WQ wq
 cmap wQ wq
-cmap Q q
+cmap Wq wq
 cmap Tabe tabe
 
 " Yank from the cursor to the end of the line, to be consistent with D and C
