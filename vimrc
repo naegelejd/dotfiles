@@ -7,7 +7,8 @@ set history=500		" Keep a decent-sized history
 set autoread		" Automatically update files changed outside of vim
 set ruler		" Show the cursor position all the time
 set number		" Show line numbers
-syntax on		" Color syntax highlighting
+
+filetype on         " Filetype recognition
 
 " Folding... use za to toggle... then zM,zR,zo,zc
 set nofoldenable	" Auto fold code by default
@@ -30,6 +31,15 @@ colorscheme jellybeans
 "endif
 "colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
 
+""""""""""" Syntax Highlighting """"""""""""
+syntax on		" Color syntax highlighting
+
+" For full syntax highlighting:
+let python_highlight_all=1
+
+" Use the below highlight group when displaying bad whitespace is desired.
+highlight BadWhitespace ctermbg=red guibg=red
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last cursor position
 au BufReadPost *
@@ -44,30 +54,26 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
 " Puts a marker at the beginning of the file to differentiate between UTF and
 " UCS encoding (WARNING: can trick shells into thinking a text file is actually
-" a binary file when executing the text file): 
+" a binary file when executing the text file):
 "``set bomb``
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Automatically indent based on file type: ``filetype indent on``
-" Keep indentation level from previous line: ``set autoindent``
-set autoindent
-set smartindent
-set smarttab
-set cindent	" great for C coding
-" set cinoptions=.....
+"""""""" Indentation """"""""
+" I just stick with Vim's indentation rules
+filetype plugin indent on
+
+" If I didn't use the 'filetype indentation plugin', I'd use the following:
+" set autoindent    " Keep indentation level from previous line
+" set smartindent   " Attempt to guess next indentation level
+" set smarttab      " Not necessary since I'm not explicitly using hard tabs
+" set cindent       " Vim will automatically enable this for the C-family of files
+" set cinoptions=   " None applicable (lots of C indentation options)
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
-" Python:, et al: 4 spaces
-" C: tabs
-"au BufRead,BufNewFile *py,*.c,*.cpp,*.cc,*.h,*.lex,Makefile,*.rb,*.html,*.php,*.css set softtabstop=4 shiftwidth=4
-au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4
+au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4 expandtab
 au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8
-au BufRead,BufNewFile *.py,*.rb,*.html,*.php,*.css set expandtab
-au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.lex,Makefile* set noexpandtab
-
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile Makefile*,*.c,*.cpp,*.cc,*.h,*.lex set noexpandtab
 
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
@@ -75,18 +81,13 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
-" Python: 79 
-" C: 79
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h set textwidth=79
-au BufRead *.txt set tw=78
+" au BufRead *.txt set tw=78
 
 " Turn off settings in 'formatoptions' relating to comment formatting.
 " - c : do not automatically insert the comment leader when wrapping based on
 "    'textwidth'
 " - o : do not insert the comment leader when using 'o' or 'O' from command mode
 " - r : do not insert the comment leader when hitting <Enter> in insert mode
-" Python: not needed
-" C: prevents insertion of '*' at the beginning of every line in a comment
 au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
 
 " Use UNIX (\n) line endings.
@@ -94,7 +95,7 @@ au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h set formatoptions-=c formatoptions-=o f
 " line endings.
 " Python: yes
 " C: yes
-au BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h set fileformat=unix
+au BufNewFile * set fileformat=unix
 
 " Delete trailing white space!!!
 fu DeleteTrailingWS()
@@ -102,15 +103,11 @@ fu DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endf
-au FileType c,cpp,java,php,ruby,python,html au BufWritePre <buffer> call DeleteTrailingWS()
+au FileType * au BufWritePre <buffer> call DeleteTrailingWS()
 
-" For full syntax highlighting:
-let python_highlight_all=1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""" Statusline """"""""
 
-
-" ------------
-" Statusline
-" ------------
 " Always show the statusline
 set laststatus=2
 "set statusline=%#comment#
@@ -133,9 +130,9 @@ set statusline+=%10((%c,%l)%) 	" line and column
 "set statusline+=%#comment#
 set statusline+=\ %p%%    	" percent through file (of cursor)
 
-" --------
-" Mappings
-" --------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""" Mappings """"""""
+"
 let mapleader = ','	" The default is '\' but many people prefer ','
 
 " Help with lazy SHIFT + ':' in command-line mode

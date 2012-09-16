@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.lx,*.lu*	setfiletype=luci
+au BufRead,BufNewFile *.lx,*.lu,*.luci set filetype=luci
