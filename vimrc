@@ -67,7 +67,9 @@ filetype plugin indent on
 " set smartindent   " Attempt to guess next indentation level
 " set smarttab      " Not necessary since I'm not explicitly using hard tabs
 " set cindent       " Vim will automatically enable this for the C-family of files
-" set cinoptions=   " None applicable (lots of C indentation options)
+
+" C formatting (comments, code indentation...)
+au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=:0,l1,t0,g0
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
@@ -82,13 +84,6 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
 " au BufRead *.txt set tw=78
-
-" Turn off settings in 'formatoptions' relating to comment formatting.
-" - c : do not automatically insert the comment leader when wrapping based on
-"    'textwidth'
-" - o : do not insert the comment leader when using 'o' or 'O' from command mode
-" - r : do not insert the comment leader when hitting <Enter> in insert mode
-au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
 
 " Use UNIX (\n) line endings.
 " Only used for new files so as to not force existing files to change their
