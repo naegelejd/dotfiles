@@ -69,13 +69,14 @@ filetype plugin indent on
 " set cindent       " Vim will automatically enable this for the C-family of files
 
 " C formatting (comments, code indentation...)
-au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=:0,l1,t0,g0
+" formatoptions: wrap and auto-format comment blocks and such
+" cinoptions: (l1 means align with case label, t0 means don't indent function return type)
+au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=l1,t0
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
 au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4 expandtab
 au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8
-au BufRead,BufNewFile Makefile*,*.c,*.cpp,*.cc,*.h,*.lex set noexpandtab
 
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
