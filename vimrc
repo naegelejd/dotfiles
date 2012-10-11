@@ -76,7 +76,7 @@ au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinop
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
 au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4 expandtab
-au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8
+au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8 noexpandtab
 
 " Display tabs at the beginning of a line in Python mode as bad.
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
