@@ -16,20 +16,27 @@ set foldmethod=indent	" fold based on indent
 "set foldnestmax=10	" deepest fold is 10 levels
 set foldlevel=1		" default fold level
 
+"""""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
+
+call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " if necessary, specify that the terminal emulator is 256 color
-"set t_Co=256
 "set term=xterm-256color
 
 " colorschemes should be in my git repo along with this vimrc
 set background=dark
+
 colorscheme jellybeans
+
 "colorscheme desert256
 
-"if !has('gui_running')
-"    let g:solarized_termcolors=256
-"endif
 "colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
+"if has('gui_running')
+"   set background=light
+"else
+"   let g:solarized_termcolors=256
+"endif
 
 """"""""""" Syntax Highlighting """"""""""""
 syntax on		" Color syntax highlighting
