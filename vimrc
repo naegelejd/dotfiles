@@ -16,6 +16,14 @@ set foldmethod=indent	" fold based on indent
 "set foldnestmax=10	" deepest fold is 10 levels
 set foldlevel=1		" default fold level
 
+""""""" Fonts """""""""
+
+if has("gui_macvim") || has("gui_mac")
+    set guifont=Menlo:h14
+else
+    set guifont=Deja\ Vu\ Sans\ Mono:h12
+endif
+
 """""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
 
 call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
@@ -24,7 +32,6 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 " if necessary, specify that the terminal emulator is 256 color
 "set term=xterm-256color
 
-" colorschemes should be in my git repo along with this vimrc
 set background=dark
 
 colorscheme jellybeans
