@@ -24,6 +24,10 @@ else
     set guifont=Deja\ Vu\ Sans\ Mono:h12
 endif
 
+if has("gui_running")
+    set lines=40 columns=160
+endif
+
 """""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
 
 call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
