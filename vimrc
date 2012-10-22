@@ -5,6 +5,8 @@ set mouse=a		" Automatically enable mouse usage
 set bs=indent,eol,start	" Allow backspacing over everything in insert mode
 set history=500		" Keep a decent-sized history
 set autoread		" Automatically update files changed outside of vim
+set showcmd             " Show cmd counter
+set showmode            " Show current mode
 set ruler		" Show the cursor position all the time
 set number		" Show line numbers
 
@@ -25,7 +27,7 @@ else
 endif
 
 if has("gui_running")
-    set lines=40 columns=160
+    set lines=40 columns=170
 endif
 
 """""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
@@ -38,16 +40,16 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 set background=dark
 
-"colorscheme jellybeans
+colorscheme jellybeans
 
 "colorscheme desert256
 
-colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
-if has('gui_running')
-   set background=light
-else
-   let g:solarized_termcolors=256
-endif
+"colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
+"if has('gui_running')
+"   set background=light
+"else
+"   let g:solarized_termcolors=256
+"endif
 
 """"""""""" Syntax Highlighting """"""""""""
 syntax on		" Color syntax highlighting
