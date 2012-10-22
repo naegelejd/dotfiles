@@ -38,16 +38,16 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 set background=dark
 
-colorscheme jellybeans
+"colorscheme jellybeans
 
 "colorscheme desert256
 
-"colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
-"if has('gui_running')
-"   set background=light
-"else
-"   let g:solarized_termcolors=256
-"endif
+colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
+if has('gui_running')
+   set background=light
+else
+   let g:solarized_termcolors=256
+endif
 
 """"""""""" Syntax Highlighting """"""""""""
 syntax on		" Color syntax highlighting
