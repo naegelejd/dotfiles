@@ -13,9 +13,10 @@ set number		" Show line numbers
 filetype on         " Filetype recognition
 
 " Folding... use za to toggle... then zM,zR,zo,zc
-set nofoldenable	" Auto fold code by default
-set foldmethod=indent	" fold based on indent
-"set foldnestmax=10	" deepest fold is 10 levels
+" set foldmethod=indent	" fold based on indent
+set foldmethod=syntax   " fold based on syntax (better for C)
+set nofoldenable	" Keep folds open by default
+set foldnestmax=10	" deepest fold is 10 levels
 set foldlevel=1		" default fold level
 
 """"""" Fonts """""""""
@@ -28,6 +29,8 @@ endif
 
 if has("gui_running")
     set lines=40 columns=170
+else
+    set t_Co=256
 endif
 
 """""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
@@ -35,6 +38,18 @@ endif
 call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""" Taglist """"""""""""""""""""""""""""""""""""""
+
+let Tlist_Only_Window = 1
+
+if !has("gui_running")
+    let Tlist_Inc_Winwidth = 0    " Fixed-width Taglist if using terminal
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " if necessary, specify that the terminal emulator is 256 color
 "set term=xterm-256color
 
@@ -173,4 +188,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " visual shifting (does not exit VISUAL MODE)
 vnoremap < <gv
 vnoremap > >gv
+
+" Map background toggle (light / dark)
+map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
