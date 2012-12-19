@@ -17,7 +17,7 @@ syn keyword luciStatement       return
 "syn keyword luciStatement       as assert break continue del exec global
 "syn keyword luciStatement       lambda nonlocal pass print return with yield
 syn keyword luciStatement       def nextgroup=luciFunction skipwhite
-syn keyword luciConditional     else if end
+syn keyword luciConditional     if then else end
 syn keyword luciRepeat          for in while do done
 "syn keyword luciOperator        in
 "syn keyword luciOperator        and in is not or

@@ -48,6 +48,13 @@ if !has("gui_running")
 endif
 
 
+""""""""""""""""""""""""""""""" Tagbar  """"""""""""""""""""""""""""""""""""""
+
+" Open Tagbar on left rather than (default) right
+let g:tagbar_left = 1
+
+let g:tagbar_width = 30
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " if necessary, specify that the terminal emulator is 256 color
