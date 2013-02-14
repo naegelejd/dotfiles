@@ -1,39 +1,32 @@
 " Vim syntax file
 " Language:     Luci
 " Maintainer:   Joe Naegele <joseph.naegele@gmail.com>
-" Last Change:  2012-09-16
+" Last Change:  2013-09-16
 
-" For version 5.x: Clear all syntax items.
-" For version 6.x: Quit when a syntax file was already loaded.
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" Quit when a (custom) syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
-"
 syn keyword luciStatement       False, None, True
-syn keyword luciStatement       return
-"syn keyword luciStatement       as assert break continue del exec global
-"syn keyword luciStatement       lambda nonlocal pass print return with yield
+syn keyword luciStatement       pass, break, continue, return
+"syn keyword luciStatement      global
 syn keyword luciStatement       def nextgroup=luciFunction skipwhite
-syn keyword luciConditional     if then else end
-syn keyword luciRepeat          for in while do done
-"syn keyword luciOperator        in
-"syn keyword luciOperator        and in is not or
-" syn keyword luciException       except finally raise try
-" syn keyword luciInclude         from import
+syn keyword luciConditional     if else
+syn keyword luciRepeat          for while do
+syn keyword luciOperator        in
+"syn keyword luciOperator       and in is not or
+" syn keyword luciException     except finally raise try
+" syn keyword luciInclude       from import
 
-" The zero-length non-grouping match before the function name is
-" extremely important in luciFunction.  Without it, everything is
-" interpreted as a function inside the contained environment of
-" doctests.
-" A dot must be allowed because of @MyClass.myfunc decorators.
-syn match   luciFunction
-      \ "\%(\%(def\s\)\s*\)\@<=\h\%(\w\|\.\)*" contained
+syn keyword luciFunction        def
 
-syn match   luciComment "#.*$" contains=luciTodo,@Spell
 syn keyword luciTodo            FIXME NOTE NOTES TODO XXX contained
+syn match   luciComment "#.*$" contains=luciTodo,@Spell
+syn region  luciComment start="/\*" end="\*/" contains=luciTodo,@Spell
+
+syn match   luciCurlyError "}"
+syn region  luciBlock start="{" end="}" contains=ALLBUT,luciCurlyError fold
 
 " Triple-quoted strings can contain doctests.
 syn region  luciString
@@ -86,6 +79,8 @@ syn match   luciNumber
 syn keyword luciBuiltin       False True None
 " built-in functions
 syn keyword luciBuiltin     help
+syn keyword luciBuiltin     dir
+syn keyword luciBuiltin     exit
 syn keyword luciBuiltin     print
 syn keyword luciBuiltin     input
 syn keyword luciBuiltin     readline
@@ -101,54 +96,39 @@ syn keyword luciBuiltin     write
 syn keyword luciBuiltin     readlines
 syn keyword luciBuiltin     range
 syn keyword luciBuiltin     sum
+"syn keyword luciBuiltin     abs
+"syn keyword luciBuiltin     round
+"syn keyword luciBuiltin     divmod
+"syn keyword luciBuiltin     del
+"syn keyword luciBuiltin     hash
+"syn keyword luciBuiltin     hex chr ord
+"syn keyword luciBuiltin     reversed sorted
+"syn keyword luciBuiltin     zip
 
-"syn keyword luciBuiltin       abs all any bin bool chr classmethod
-"syn keyword luciBuiltin       abs all any bin bool chr classmethod
-"syn keyword luciBuiltin       compile complex delattr dict dir divmod
-"syn keyword luciBuiltin       enumerate eval filter float format
-"syn keyword luciBuiltin       frozenset getattr globals hasattr hash
-"syn keyword luciBuiltin       help hex id input int isinstance
-"syn keyword luciBuiltin       issubclass iter len list locals map max
-"syn keyword luciBuiltin       min next object oct open ord pow print
-"syn keyword luciBuiltin       property range repr reversed round set
-"syn keyword luciBuiltin       setattr slice sorted staticmethod str
-"syn keyword luciBuiltin       sum super tuple type vars zip __import__
-
-" builtin base exceptions (only used as base classes for other exceptions)
-syn keyword luciExceptions    BaseException Exception
-syn keyword luciExceptions    ArithmeticError EnvironmentError
-syn keyword luciExceptions    LookupError
+"syn keyword luciExceptions    Exception
 
 
 " Sync at the beginning of class, function, or method definition.
-syn sync match luciSync grouphere NONE "^\s*\%(def\|class\)\s\+\h\w*\s*("
-
-if version >= 508
-  command -nargs=+ HiLink hi def link <args>
-else
-  command -nargs=+ HiLink hi link <args>
-endif
+syn sync match luciSync grouphere NONE "^\s*\%(def\|struct\)\s\+\h\w*\s*("
 
 " The default highlight links.  Can be overridden later.
-HiLink luciStatement        Statement
-HiLink luciConditional      Conditional
-HiLink luciRepeat           Repeat
-HiLink luciOperator         Operator
-HiLink luciException        Exception
-HiLink luciInclude          Include
-HiLink luciDecorator        Define
-HiLink luciFunction         Function
-HiLink luciComment          Comment
-HiLink luciTodo             Todo
-HiLink luciString           String
-HiLink luciRawString        String
-HiLink luciEscape           Special
-HiLink luciNumber           Number
-HiLink luciBuiltin          Function
-HiLink luciExceptions       Structure
-
-delcommand HiLink
+hi def link luciStatement        Statement
+hi def link luciConditional      Conditional
+hi def link luciRepeat           Repeat
+hi def link luciOperator         Operator
+hi def link luciException        Exception
+hi def link luciInclude          Include
+hi def link luciFunction         Function
+hi def link luciComment          Comment
+hi def link luciTodo             Todo
+hi def link luciString           String
+hi def link luciRawString        String
+hi def link luciEscape           Special
+hi def link luciNumber           Number
+hi def link luciBuiltin          Define
+hi def link luciExceptions       Structure
+hi def link luciCurlyError       Error
 
 let b:current_syntax = "luci"
 
-" vim:set sw=2 sts=2 ts=8 noet:
+" vim:set sw=4 sts=4 et:
