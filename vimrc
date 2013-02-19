@@ -9,6 +9,7 @@ set showcmd             " Show cmd counter
 set showmode            " Show current mode
 set ruler		" Show the cursor position all the time
 set number		" Show line numbers
+set ignorecase          " Ignore case when searching
 
 filetype on         " Filetype recognition
 
@@ -141,7 +142,8 @@ fu DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endf
-au FileType * au BufWritePre <buffer> call DeleteTrailingWS()
+map <F6> :call DeleteTrailingWS()<CR>
+" au FileType * au BufWritePre <buffer> call DeleteTrailingWS()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""" Statusline """"""""
