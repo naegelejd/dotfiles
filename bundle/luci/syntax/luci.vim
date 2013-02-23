@@ -8,8 +8,8 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn keyword luciStatement       False, None, True
-syn keyword luciStatement       pass, break, continue, return
+syn keyword luciStatement       False None True
+syn keyword luciStatement       pass break continue return
 "syn keyword luciStatement      global
 syn keyword luciStatement       def nextgroup=luciFunction skipwhite
 syn keyword luciConditional     if else
@@ -83,19 +83,13 @@ syn keyword luciBuiltin     dir
 syn keyword luciBuiltin     exit
 syn keyword luciBuiltin     print
 syn keyword luciBuiltin     input
-syn keyword luciBuiltin     readline
+syn keyword luciBuiltin     readline readlines
 syn keyword luciBuiltin     type
 syn keyword luciBuiltin     assert
-syn keyword luciBuiltin     str
-syn keyword luciBuiltin     int
-syn keyword luciBuiltin     float
-syn keyword luciBuiltin     open
-syn keyword luciBuiltin     close
-syn keyword luciBuiltin     read
-syn keyword luciBuiltin     write
-syn keyword luciBuiltin     readlines
+syn keyword luciBuiltin     str int float
+syn keyword luciBuiltin     open close read write
 syn keyword luciBuiltin     range
-syn keyword luciBuiltin     sum
+syn keyword luciBuiltin     len sum max min
 "syn keyword luciBuiltin     abs
 "syn keyword luciBuiltin     round
 "syn keyword luciBuiltin     divmod
