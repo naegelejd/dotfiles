@@ -10,8 +10,10 @@ set showmode            " Show current mode
 set ruler		" Show the cursor position all the time
 set number		" Show line numbers
 set ignorecase          " Ignore case when searching
+set smartcase           " Do smart things with capitalization when searching
 
-filetype on         " Filetype recognition
+filetype off                " Turn off filetype recognition first, to force a reload
+filetype plugin indent on   " Filetype recognition
 
 " Folding... use za to toggle... then zM,zR,zo,zc
 " set foldmethod=indent	" fold based on indent
@@ -55,6 +57,22 @@ endif
 let g:tagbar_left = 1
 
 let g:tagbar_width = 30
+
+
+"""""""""""""""""""""""""""""" Syntastic """""""""""""""""""""""""""""""""""""
+" SyntasticCheck()
+" Errors()
+
+let g:syntastic_error_symbol = '!'
+let g:syntastic_warning_symbol = '?'
+
+" automatically show errors and close when fixed
+let g:syntastic_auto_loc_list = 1       
+
+let g:syntastic_c_checkers = ['make']
+let g:syntastic_cpp_checkers = ['make']
+let g:syntastic_python_checkers = ['pyflakes']
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -103,9 +121,7 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""" Indentation """"""""
 " I just stick with Vim's indentation rules
-filetype plugin indent on
-
-" If I didn't use the 'filetype indentation plugin', I'd use the following:
+" If I didn't use the 'filetype plugin indent', I'd use the following:
 " set autoindent    " Keep indentation level from previous line
 " set smartindent   " Attempt to guess next indentation level
 " set smarttab      " Not necessary since I'm not explicitly using hard tabs
