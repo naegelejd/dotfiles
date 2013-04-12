@@ -40,7 +40,10 @@ endif
 
 call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""
+
+let g:SuperTabNoCompleteAfter = ['^', ',', '{', '}', '\s'] 
 
 """"""""""""""""""""""""""""""" Taglist """"""""""""""""""""""""""""""""""""""
 
@@ -67,7 +70,7 @@ let g:syntastic_error_symbol = '!'
 let g:syntastic_warning_symbol = '?'
 
 " automatically show errors and close when fixed
-let g:syntastic_auto_loc_list = 1       
+" let g:syntastic_auto_loc_list = 1       
 
 let g:syntastic_c_checkers = ['make']
 let g:syntastic_cpp_checkers = ['make']
