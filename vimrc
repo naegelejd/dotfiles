@@ -123,12 +123,13 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""" Indentation """"""""
-" I just stick with Vim's indentation rules
+set autoindent      " Keep indentation level from previous line
+
 " If I didn't use the 'filetype plugin indent', I'd use the following:
-" set autoindent    " Keep indentation level from previous line
 " set smartindent   " Attempt to guess next indentation level
 " set smarttab      " Not necessary since I'm not explicitly using hard tabs
 " set cindent       " Vim will automatically enable this for the C-family of files
+
 
 " C formatting (comments, code indentation...)
 " formatoptions: wrap and auto-format comment blocks and such
