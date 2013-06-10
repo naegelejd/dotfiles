@@ -1,5 +1,8 @@
 " Joe Naegele's VIMRC, somewhat focused toward python pep-8 specs
 
+" Source Pathogen from bundle dir, rather than separate 'autoload' dir
+runtime bundle/pathogen/autoload/pathogen.vim
+
 set nocompatible	" Use Vim defaults
 set mouse=a		" Automatically enable mouse usage
 set bs=indent,eol,start	" Allow backspacing over everything in insert mode
@@ -44,14 +47,6 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 """"""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""
 
 let g:SuperTabNoCompleteAfter = ['^', ',', '{', '}', '\s'] 
-
-""""""""""""""""""""""""""""""" Taglist """"""""""""""""""""""""""""""""""""""
-
-let Tlist_Only_Window = 1
-
-if !has("gui_running")
-    let Tlist_Inc_Winwidth = 0    " Fixed-width Taglist if using terminal
-endif
 
 
 """"""""""""""""""""""""""""""" Tagbar  """"""""""""""""""""""""""""""""""""""

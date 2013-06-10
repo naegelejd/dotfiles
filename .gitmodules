@@ -1,0 +1,39 @@
+[submodule "bundle/jellybeans"]
+	path = bundle/jellybeans
+	url = git@github.com:nanotech/jellybeans.vim.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
+[submodule "bundle/mayansmoke"]
+	path = bundle/mayansmoke
+	url = git@github.com:vim-scripts/mayansmoke.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git@github.com:garbas/vim-snipmate.git
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/tlib_vim"]
+	path = bundle/tlib_vim
+	url = git@github.com:tomtom/tlib_vim.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git@github.com:tpope/vim-markdown.git
+[submodule "bundle/zenburn"]
+	path = bundle/zenburn
+	url = git@github.com:jnurmine/Zenburn.git
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = git@github.com:tpope/vim-pathogen.git
