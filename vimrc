@@ -129,7 +129,8 @@ set autoindent      " Keep indentation level from previous line
 " C formatting (comments, code indentation...)
 " formatoptions: wrap and auto-format comment blocks and such
 " cinoptions: (l1 means align with case label, t0 means don't indent function return type)
-au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=l1,t0
+" au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=l1,t0
+au BufRead,BufNewFile * set formatoptions=tcqlron cinoptions=l1,t0
 
 " What to use for an indent.
 " This will affect Ctrl-T and 'autoindent'.
@@ -137,9 +138,9 @@ au BufRead,BufNewFile * set softtabstop=4 shiftwidth=4 expandtab
 au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8 noexpandtab
 
 " Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile * match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.cc,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile * match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
 " au BufRead *.txt set tw=78
