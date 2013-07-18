@@ -99,10 +99,13 @@ let g:syntastic_warning_symbol = '?'
 " automatically show errors and close when fixed
 " let g:syntastic_auto_loc_list = 1
 
-let g:syntastic_c_checkers = ['make']
-let g:syntastic_cpp_checkers = ['make']
+let g:syntastic_c_checkers = ['make', 'gcc']
+let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_python_checkers = ['pyflakes']
-
+let g:syntastic_haskell_checkers = ['ghc-mod']
+let g:syntastic_lua_checkers = ['luac']
+let g:syntastic_sh_checkers = ['sh']
+let g:syntastic_xml_checkers = ['xmllint']
 
 """"""""""" Syntax Highlighting """"""""""""
 syntax on		" Color syntax highlighting
