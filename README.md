@@ -1,4 +1,5 @@
 vimrc
 ======
 
-My vimrc, for portability
+Symlink this directory to `~/.vim`
+Symlink `vimrc` `to ~/.vimrc`
