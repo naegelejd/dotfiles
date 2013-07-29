@@ -1,3 +1,8 @@
+" tagbar is broken on VIM < 7.0.167
+if version < 702
+    let g:loaded_tagbar = 1
+endif
+
 " Source Pathogen from bundle dir, rather than separate 'autoload' dir
 runtime bundle/pathogen/autoload/pathogen.vim
 
@@ -85,8 +90,8 @@ let g:SuperTabNoCompleteAfter = ['^', ',', '{', '}', '\s']
 
 " Open Tagbar on left rather than (default) right
 let g:tagbar_left = 1
-
 let g:tagbar_width = 30
+nmap <F8> :TagbarToggle<CR>
 
 
 """""""""""""""""""""""""""""" Syntastic """""""""""""""""""""""""""""""""""""
