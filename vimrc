@@ -19,6 +19,10 @@ set number		" Show line numbers
 set ignorecase          " Ignore case when searching
 set smartcase           " Do smart things with capitalization when searching
 
+set noerrorbells        " Turn off error bell
+set visualbell          " temporarily enable visual bell
+set t_vb=               " Really turn off bells
+
 set modeline            " check for mode lines at top/bottom of file
 set modelines=4         " number of lines checked
 
@@ -104,7 +108,7 @@ let g:syntastic_warning_symbol = '?'
 " automatically show errors and close when fixed
 " let g:syntastic_auto_loc_list = 1
 
-let g:syntastic_c_checkers = ['make', 'gcc']
+let g:syntastic_c_checkers = ['make']
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_haskell_checkers = ['ghc-mod']
