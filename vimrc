@@ -118,8 +118,18 @@ syntax on		" Color syntax highlighting
 " For full syntax highlighting:
 let python_highlight_all=1
 
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
+" Display trailing whitespace as bad.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+au BufWinEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Display tabs at the beginning of a line in Python mode as bad.
+au BufWinEnter * match ExtraWhitespace /^\t\+/
+au InsertLeave * match ExtraWhitespace /^\t\+/
+
+au BufWinLeave * call clearmatches()
 
 " if necessary, specify that the terminal emulator is 256 color
 "set term=xterm-256color
@@ -167,19 +177,19 @@ au BufRead,BufNewFile * set formatoptions=tcqlron cinoptions=l1,t0
 au BufRead,BufNewFile * au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8 noexpandtab
 
 " Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile * match BadWhitespace /^\t\+/
+au BufRead,BufNewFile * match ExtraWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile * match BadWhitespace /\s\+$/
+"au BufRead,BufNewFile * match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
 " au BufRead *.txt set tw=78
 
 " Use UNIX (\n) line endings.
-" Only used for new files so as to not force existing files to change their
-" line endings.
-" Python: yes
-" C: yes
 au BufNewFile * set fileformat=unix
+
+"""""""" Mappings """"""""
+
+let mapleader = ','	" The default is '\' but many people prefer ','
 
 " Delete trailing white space!!!
 fu DeleteTrailingWS()
@@ -189,10 +199,6 @@ fu DeleteTrailingWS()
 endf
 map <F6> :call DeleteTrailingWS()<CR>
 " au FileType * au BufWritePre <buffer> call DeleteTrailingWS()
-
-"""""""" Mappings """"""""
-"
-let mapleader = ','	" The default is '\' but many people prefer ','
 
 " Help with lazy SHIFT + ':' in command-line mode
 nnoremap ; :
