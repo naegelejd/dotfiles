@@ -6,29 +6,31 @@ endif
 " Source Pathogen from bundle dir, rather than separate 'autoload' dir
 runtime bundle/pathogen/autoload/pathogen.vim
 
-set nocompatible	" Use Vim defaults
-set mouse=a		" Automatically enable mouse usage
+set nocompatible        " Use Vim defaults
+set mouse=a             " Automatically enable mouse usage
 set ttyfast
-set bs=indent,eol,start	" Allow backspacing over everything in insert mode
-set history=500		" Keep a decent-sized history
-set autoread		" Automatically update files changed outside of vim
+set bs=indent,eol,start " Allow backspacing over everything in insert mode
+set history=500         " Keep a decent-sized history
+set autoread            " Automatically update files changed outside of vim
 set showcmd             " Show cmd counter
 set noshowmode          " Hide mode name at bottom of scren
-set ruler		" Show the cursor position all the time
-set number		" Show line numbers
+set ruler               " Show the cursor position all the time
+set number              " Show line numbers
 set ignorecase          " Ignore case when searching
 set smartcase           " Do smart things with capitalization when searching
+set hlsearch            " Highlight search matches
 
 set noerrorbells        " Turn off error bell
 set visualbell          " temporarily enable visual bell
-set t_vb=               " Really turn off bells
+set t_vb=               " Really turn off bells (flashing)
+au GUIEnter * set visualbell t_vb=  " Must be set after GUI starts
 
 set modeline            " check for mode lines at top/bottom of file
 set modelines=4         " number of lines checked
 
 set nostartofline       " Maintain cursor column position for 'gg','G','H','M','L'
 set linebreak
-set showbreak=↪\ 
+set showbreak=↪\
 
 set scrolloff=1         " always show content after scroll
 set scrolljump=5        " Minimum number of lines to scroll
@@ -59,23 +61,23 @@ set splitright          " split new window to right
 set laststatus=2        " Always show the statusline
 
 " Folding... use za to toggle... then zM,zR,zo,zc
-" set foldmethod=indent	" fold based on indent
+" set foldmethod=indent " fold based on indent
 set foldmethod=syntax   " fold based on syntax (better for C)
-set nofoldenable	" Keep folds open by default
-set foldnestmax=10	" deepest fold is 10 levels
-set foldlevel=1		" default fold level
+set nofoldenable        " Keep folds open by default
+set foldnestmax=10      " deepest fold is 10 levels
+set foldlevel=1         " default fold level
 
 
 """"""" Fonts """""""""
 if has("gui_macvim") || has("gui_mac")
     set guifont=Menlo:h14
-else
-    set guifont=Deja\ Vu\ Sans\ Mono:h12
+elseif has("gui_gtk2")
+    set guifont=Deja\ Vu\ Sans\ Mono\ 10
 endif
 
 """"""" GUI """"""""
 if has("gui_running")
-    set lines=999 columns=9999  " open maximized
+    set lines=40 columns=192  " open maximized
 else
     set t_Co=256
 endif
@@ -88,7 +90,7 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 """"""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""
 
 let g:SuperTabNoCompleteAfter = ['^', '|', '%', '*', '/', '-', '+', '!',
-        \ '\.', '?', '"', "'", ',', ':', ';', '\\', '/*', '*/', '//', 
+        \ '\.', '?', '"', "'", ',', ':', ';', '\\', '/*', '*/', '//',
         \ '<', '>', '{', '}', '[', ']', '(', ')', '\s']
 
 
@@ -119,37 +121,66 @@ let g:syntastic_sh_checkers = ['sh']
 let g:syntastic_xml_checkers = ['xmllint']
 
 """"""""""" Syntax Highlighting """"""""""""
-syntax on		" Color syntax highlighting
+syntax on               " Color syntax highlighting
+
+" if necessary, specify that the terminal emulator is 256 color
+"set term=xterm-256color
+if has("gui_running")
+    colorscheme mayansmoke
+else
+    set background=dark
+    colorscheme jellybeans
+endif
+
+" ensure solarized looks good in terminal
+let g:solarized_termcolors=256
+
+let s:mycolors = ['jellybeans', 'desert256', 'zenburn', 'wombat', 'molokai', 'mayansmoke', 'solarized']
+function! NextColor()
+    if len(s:mycolors) == 0
+        execute 'colorscheme default'
+    endif
+    if exists('g:colors_name')
+        let l:current = index(s:mycolors, g:colors_name)
+    else
+        let l:current = -1
+    endif
+    let l:newindex = (l:current + 1) % len(s:mycolors)
+    let l:scheme = s:mycolors[l:newindex]
+    execute 'colorscheme ' . l:scheme
+    redraw
+    echo l:scheme
+endfunction
+
+" Highlight trailing whitespace
+highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
+" ensure the TrailingWhitespace colors persist through colorscheme changes
+au ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
+" Don't match trailing whitespace while typing in insert mode
+au InsertEnter * match TrailingWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match TrailingWhitespace /\s\+$/
+au BufWinEnter * match TrailingWhitespace /\s\+$/
+" Clear matches after leaving a window for performance reasons
+au BufWinLeave * call clearmatches()
+
+" Highligh tabs
+highlight BadTabs ctermbg=green guibg=green
+2match BadTabs /\t/
+au ColorScheme * highlight BadTabs ctermbg=green guibg=green
 
 " For full syntax highlighting:
 let python_highlight_all=1
 
-" Display trailing whitespace as bad.
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-au BufWinEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
+" Highlight bad spaces in C code
+let c_space_errors = 1
 
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufWinEnter * match ExtraWhitespace /^\t\+/
-au InsertLeave * match ExtraWhitespace /^\t\+/
-
-au BufWinLeave * call clearmatches()
-
-" if necessary, specify that the terminal emulator is 256 color
-"set term=xterm-256color
-
-set background=dark
-
-colorscheme jellybeans
-"colorscheme desert256
-"colorscheme solarized	" Use <F5> to toggle solarized light/dark scheme
-"if has('gui_running')
-"   set background=light
-"else
-"   let g:solarized_termcolors=256
-"endif
+" Delete trailing white space!!!
+function DeleteTrailingWS()
+  execute "normal mz"
+  %s/\s\+$//ge
+  execute "normal `z"
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last cursor position
@@ -182,11 +213,6 @@ au BufRead,BufNewFile * set formatoptions=tcqlron cinoptions=l1,t0
 " This will affect Ctrl-T and 'autoindent'.
 au BufRead,BufNewFile * au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8 noexpandtab
 
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile * match ExtraWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-"au BufRead,BufNewFile * match BadWhitespace /\s\+$/
-
 " Wrap text after a certain number of characters
 " au BufRead *.txt set tw=78
 
@@ -195,16 +221,7 @@ au BufNewFile * set fileformat=unix
 
 """""""" Mappings """"""""
 
-let mapleader = ','	" The default is '\' but many people prefer ','
-
-" Delete trailing white space!!!
-fu DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endf
-map <F6> :call DeleteTrailingWS()<CR>
-" au FileType * au BufWritePre <buffer> call DeleteTrailingWS()
+let mapleader = ','     " The default is '\' but many people prefer ','
 
 " Help with lazy SHIFT + ':' in command-line mode
 nnoremap ; :
@@ -219,6 +236,12 @@ cmap wQ wq
 cmap Wq wq
 cmap Tabe tabe
 
+" Easier window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Yank from the cursor to the end of the line, to be consistent with D and C
 nnoremap Y y$
 
@@ -229,5 +252,14 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Map colorscheme rotation
+map <F3> :call NextColor()<CR>
+nmap <silent> <leader>colo :call NextColor()<CR>
+
 " Map background toggle (light / dark)
 map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nmap <silent> <leader>tbg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Map deletion of trailing white space
+map <F6> :call DeleteTrailingWS()<CR>
+nmap <silent> <leader>dtw :call DeleteTrailingWS()<CR>
