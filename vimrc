@@ -89,10 +89,13 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 """"""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""
 
-let g:SuperTabNoCompleteAfter = ['^', '|', '%', '*', '/', '-', '+', '!',
-        \ '\.', '?', '"', "'", ',', ':', ';', '\\', '/*', '*/', '//',
-        \ '<', '>', '{', '}', '[', ']', '(', ')', '\s']
-
+" don't attempt to autocomplete after any symbols, spaces, etc.
+let g:SuperTabNoCompleteAfter = [
+        \ '+', '-', '\*', '/', '%', '\^', '|', '~', '!',
+        \ '@', '#', '$', '&', ',', '\.', '?', ':', ';',
+        \ "'", '"', '\\', '`',
+        \ '<', '>', '[', ']', '{', '}', '(', ')',
+        \ '\s', '^']
 
 """"""""""""""""""""""""""""""" Tagbar  """"""""""""""""""""""""""""""""""""""
 
@@ -263,3 +266,8 @@ nmap <silent> <leader>tbg :let &background = ( &background == "dark"? "light" : 
 " Map deletion of trailing white space
 map <F6> :call DeleteTrailingWS()<CR>
 nmap <silent> <leader>dtw :call DeleteTrailingWS()<CR>
+
+" Map tag and pop for ctags
+" Note the intentional space after ':tag'
+nmap <silent> <leader>t :tag 
+nmap <silent> <leader>p :pop<CR>
