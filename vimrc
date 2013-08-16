@@ -91,7 +91,7 @@ call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 " don't attempt to autocomplete after any symbols, spaces, etc.
 let g:SuperTabNoCompleteAfter = [
-        \ '+', '-', '\*', '/', '%', '\^', '|', '~', '!',
+        \ '+', '-', '\*', '/', '%', '\^', '|', '\~', '!',
         \ '@', '#', '$', '&', ',', '\.', '?', ':', ';',
         \ "'", '"', '\\', '`',
         \ '<', '>', '[', ']', '{', '}', '(', ')',
@@ -179,7 +179,7 @@ let python_highlight_all=1
 let c_space_errors = 1
 
 " Delete trailing white space!!!
-function DeleteTrailingWS()
+function! DeleteTrailingWS()
   execute "normal mz"
   %s/\s\+$//ge
   execute "normal `z"
