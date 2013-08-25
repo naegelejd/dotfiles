@@ -168,7 +168,7 @@ au BufWinEnter * match TrailingWhitespace /\s\+$/
 au BufWinLeave * call clearmatches()
 
 " Highligh tabs
-highlight BadTabs ctermbg=green guibg=green
+highlight BadTabs ctermbg=darkgreen guibg=darkgreen
 2match BadTabs /\t/
 au ColorScheme * highlight BadTabs ctermbg=green guibg=green
 
@@ -221,6 +221,7 @@ au BufRead,BufNewFile * au BufRead,BufNewFile Makefile* set softtabstop=8 shiftw
 
 " Use UNIX (\n) line endings.
 au BufNewFile * set fileformat=unix
+
 
 """""""" Mappings """"""""
 
