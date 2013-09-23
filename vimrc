@@ -9,6 +9,7 @@ runtime bundle/pathogen/autoload/pathogen.vim
 set nocompatible        " Use Vim defaults
 set mouse=a             " Automatically enable mouse usage
 set ttyfast
+set autowrite           " Automatically write buffer
 set bs=indent,eol,start " Allow backspacing over everything in insert mode
 set history=500         " Keep a decent-sized history
 set autoread            " Automatically update files changed outside of vim
@@ -19,6 +20,10 @@ set number              " Show line numbers
 set ignorecase          " Ignore case when searching
 set smartcase           " Do smart things with capitalization when searching
 set hlsearch            " Highlight search matches
+set incsearch           " 'relatime' search matching
+
+set lazyredraw          " Don't redraw while executing macros
+set magic               " regular expressions
 
 set noerrorbells        " Turn off error bell
 set visualbell          " temporarily enable visual bell
@@ -32,8 +37,8 @@ set nostartofline       " Maintain cursor column position for 'gg','G','H','M','
 set linebreak
 set showbreak=↪\
 
-set scrolloff=1         " always show content after scroll
-set scrolljump=5        " Minimum number of lines to scroll
+set scrolloff=4         " keep cursor within 4 lines from edge of window
+set scrolljump=1        " scroll a line at a time
 
 set wildmenu                    " show list for autocomplete
 set wildmode=list:longest:full  " priority for tab completion
@@ -67,10 +72,14 @@ set nofoldenable        " Keep folds open by default
 set foldnestmax=10      " deepest fold is 10 levels
 set foldlevel=1         " default fold level
 
+set encoding=utf8       " UTF-8 as default encoding
+set fileformats=unix,mac,dos    " file format precedence
+
+set viminfo^=%      " Remember info about open buffers on close
 
 """"""" Fonts """""""""
 if has("gui_macvim") || has("gui_mac")
-    set guifont=Menlo:h14
+    set guifont=Menlo:h12
 elseif has("gui_gtk2")
     set guifont=Deja\ Vu\ Sans\ Mono\ 10
 endif
@@ -78,6 +87,7 @@ endif
 """"""" GUI """"""""
 if has("gui_running")
     set lines=40 columns=192  " open maximized
+    set guitablabel=%M\ %t
 else
     set t_Co=256
 endif
@@ -129,7 +139,7 @@ syntax on               " Color syntax highlighting
 " if necessary, specify that the terminal emulator is 256 color
 "set term=xterm-256color
 if has("gui_running")
-    colorscheme mayansmoke
+    colorscheme solarized
 else
     set background=dark
     colorscheme jellybeans
@@ -170,7 +180,7 @@ au BufWinLeave * call clearmatches()
 " Highligh tabs
 highlight BadTabs ctermbg=darkgreen guibg=darkgreen
 2match BadTabs /\t/
-au ColorScheme * highlight BadTabs ctermbg=green guibg=green
+au ColorScheme * highlight BadTabs ctermbg=darkgreen guibg=darkgreen
 
 " For full syntax highlighting:
 let python_highlight_all=1
@@ -179,23 +189,27 @@ let python_highlight_all=1
 let c_space_errors = 1
 
 " Delete trailing white space!!!
-function! DeleteTrailingWS()
+fu! DeleteTrailingWS()
   execute "normal mz"
   %s/\s\+$//ge
   execute "normal `z"
-endfunction
+endfu
+
+fu! DeleteAllTabs()
+  exe "normal mz"
+  %s/\t//ge
+  exe "normal `z"
+endfu
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last cursor position
 au BufReadPost *
-\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-\ exe "normal! g'\"" |
-\ endif
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \ exe "normal! g'\"" |
+    \ endif
 
 " Don't write swapfile on most commonly used directories for NFS mounts or USB sticks
 au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-
-" Set the default file encoding to UTF-8: ``set encoding=utf-8``
 
 " Puts a marker at the beginning of the file to differentiate between UTF and
 " UCS encoding (WARNING: can trick shells into thinking a text file is actually
@@ -212,16 +226,11 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 " au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=l1,t0
 au BufRead,BufNewFile * set formatoptions=tcqlron cinoptions=l1,t0
 
-" What to use for an indent.
-" This will affect Ctrl-T and 'autoindent'.
-au BufRead,BufNewFile * au BufRead,BufNewFile Makefile* set softtabstop=8 shiftwidth=8 noexpandtab
+au FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
+au FileType markdown setlocal softtabstop=2 shiftwidth=2
 
 " Wrap text after a certain number of characters
 " au BufRead *.txt set tw=78
-
-" Use UNIX (\n) line endings.
-au BufNewFile * set fileformat=unix
-
 
 """""""" Mappings """"""""
 
@@ -256,6 +265,13 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <C-R>=expand("%:p:h")<CR>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<CR>:pwd<CR>
+
 " Map colorscheme rotation
 map <F3> :call NextColor()<CR>
 nmap <silent> <leader>colo :call NextColor()<CR>
@@ -268,7 +284,29 @@ nmap <silent> <leader>tbg :let &background = ( &background == "dark"? "light" : 
 map <F6> :call DeleteTrailingWS()<CR>
 nmap <silent> <leader>dtw :call DeleteTrailingWS()<CR>
 
+" delete all tabs in the buffer
+nmap <silent> <leader>dat :call DeleteAllTabs()<CR>
+
+" redraw screen (Since I mapped Ctrl-L to window navigation)
+nmap <leader>r :redraw!<CR>
+
+" toggle paste mode
+nmap <leader>pp :setlocal paste!<CR>
+
+" Pressing ,ss will toggle and untoggle Spell-Checking
+map <leader>ss :setlocal spell!<CR>
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
 " Map tag and pop for ctags
 " Note the intentional space after ':tag'
 nmap <silent> <leader>t :tag 
 nmap <silent> <leader>p :pop<CR>
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
