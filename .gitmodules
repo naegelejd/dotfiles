@@ -1,51 +1,51 @@
 [submodule "bundle/jellybeans"]
 	path = bundle/jellybeans
-	url = git@github.com:nanotech/jellybeans.vim.git
+	url = https://github.com/nanotech/jellybeans.vim
 [submodule "bundle/mayansmoke"]
 	path = bundle/mayansmoke
-	url = git@github.com:vim-scripts/mayansmoke.git
+	url = https://github.com/vim-scripts/mayansmoke
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
-	url = git@github.com:garbas/vim-snipmate.git
+	url = https://github.com/garbas/vim-snipmate
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
-	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
+	url = https://github.com/MarcWeber/vim-addon-mw-utils
 [submodule "bundle/tlib_vim"]
 	path = bundle/tlib_vim
-	url = git@github.com:tomtom/tlib_vim.git
+	url = https://github.com/tomtom/tlib_vim
 [submodule "bundle/solarized"]
 	path = bundle/solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized
 [submodule "bundle/supertab"]
 	path = bundle/supertab
-	url = git@github.com:ervandew/supertab.git
+	url = https://github.com/ervandew/supertab
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
+	url = https://github.com/scrooloose/syntastic
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
-	url = git@github.com:majutsushi/tagbar.git
+	url = https://github.com/majutsushi/tagbar
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
-	url = git@github.com:tpope/vim-markdown.git
+	url = https://github.com/tpope/vim-markdown
 [submodule "bundle/zenburn"]
 	path = bundle/zenburn
-	url = git@github.com:jnurmine/Zenburn.git
+	url = https://github.com/jnurmine/Zenburn
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
-	url = git@github.com:tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
-	url = git@github.com:bling/vim-airline
+	url = https://github.com/bling/vim-airline
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
 [submodule "bundle/vim-commentary"]
 	path = bundle/vim-commentary
-	url = git@github.com:tpope/vim-commentary
+	url = https://github.com/tpope/vim-commentary
 [submodule "bundle/molokai"]
 	path = bundle/molokai
-	url = git@github.com:tomasr/molokai
+	url = https://github.com/tomasr/molokai
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
-	url = git@github.com:honza/vim-snippets
+	url = https://github.com/honza/vim-snippets
