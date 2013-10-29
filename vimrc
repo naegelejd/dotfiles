@@ -47,7 +47,9 @@ set wildignore+=*/.git/*,*/.DS_Store
 filetype off                " Turn off filetype recognition first, to force a reload
 filetype plugin indent on   " Filetype recognition
 set autoindent
-set smartindent   " Attempt to guess next indentation level
+" set smartindent   " (Prefer filetype indent)
+" set cindent       " (Prefer filetype indent)
+
 set smarttab      " Not necessary since I'm not explicitly using hard tabs
 set expandtab     " convert tabs to spaces
 " set tabstop=4
@@ -217,8 +219,6 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 "``set bomb``
 
 """""""" Filetype-specific """"""""
-
-" set cindent       " Vim will automatically enable this for the C-family of files
 
 " C formatting (comments, code indentation...)
 " formatoptions: wrap and auto-format comment blocks and such
