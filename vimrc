@@ -134,6 +134,7 @@ let g:syntastic_haskell_checkers = ['ghc-mod']
 let g:syntastic_lua_checkers = ['luac']
 let g:syntastic_sh_checkers = ['sh']
 let g:syntastic_xml_checkers = ['xmllint']
+let g:syntastic_javascript_checkers = ['jsl']
 
 """"""""""" Syntax Highlighting """"""""""""
 syntax on               " Color syntax highlighting
