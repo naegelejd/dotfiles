@@ -228,7 +228,7 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 au BufRead,BufNewFile * set formatoptions=tcqlron cinoptions=l1,t0
 
 au FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
-au FileType markdown setlocal softtabstop=2 shiftwidth=2
+au FileType html,markdown setlocal softtabstop=2 shiftwidth=2
 
 " Wrap text after a certain number of characters
 " au BufRead *.txt set tw=78
