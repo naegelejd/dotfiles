@@ -8,116 +8,127 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn keyword nolliStatement       pass break continue return
-syn keyword nolliStatement       func nextgroup=nolliFunction skipwhite
-syn keyword nolliConditional     if else
-syn keyword nolliRepeat          for while until do
-syn keyword nolliOperator        in is and or not module
-" syn keyword nolliException     except finally raise try
-" syn keyword nolliInclude       from import
+syn case match
 
-syn keyword nolliFunction        func class
+syn keyword     nolliDirective         module import
+syn keyword     nolliDeclaration       var const type
+syn keyword     nolliDeclType          struct iface
 
-syn keyword nolliTodo            FIXME NOTE NOTES TODO XXX contained
-syn match   nolliComment "//.*$" contains=nolliTodo,@Spell
-syn region  nolliComment start="/\*" end="\*/" contains=nolliTodo,@Spell
+hi def link     nolliDirective         Statement
+hi def link     nolliDeclaration       Keyword
+hi def link     nolliDeclType          Keyword
 
-syn match   nolliCurlyError "}"
-syn region  nolliBlock start="{" end="}" contains=ALLBUT,nolliCurlyError fold
+" Keywords within functions
+syn keyword     nolliStatement         defer return break continue
+syn keyword     nolliConditional       if else
+" syn keyword     nolliConditional       switch select
+" syn keyword     nolliLabel             case default
+syn keyword     nolliRepeat            for while
 
-" Triple-quoted strings can contain doctests.
-syn region  nolliString
-      \ start=+[uU]\=\z(["]\)+ end="\z1" skip="\\\\\|\\\z1"
-      \ contains=nolliEscape,@Spell
-syn region  nolliRawString
-      \ start=+[uU]\=[rR]\z(["]\)+ end="\z1" skip="\\\\\|\\\z1"
-      \ contains=@Spell
+hi def link     nolliStatement         Statement
+hi def link     nolliConditional       Conditional
+hi def link     nolliLabel             Label
+hi def link     nolliRepeat            Repeat
 
-syn match   nolliEscape  +\\[abfnrtv'"\\]+ contained
-syn match   nolliEscape  "\\\o\{1,3}" contained
-syn match   nolliEscape  "\\x\x\{2}" contained
-syn match   nolliEscape  "\%(\\u\x\{4}\|\\U\x\{8}\)" contained
-" Python allows case-insensitive Unicode IDs: http://www.unicode.org/charts/
-syn match   nolliEscape  "\\N{\a\+\%(\s\a\+\)*}" contained
-syn match   nolliEscape  "\\$"
+" Predefined types
+syn keyword     nolliType              bool str error
+syn keyword     nolliSignedInts        char int
+syn keyword     nolliFloats            real
+syn keyword     nolliComplexes         cplx64 complex128
 
-" It is very important to understand all details before changing the
-" regular expressions below or their order.
-" The word boundaries are *not* the floating-point number boundaries
-" because of a possible leading or trailing decimal point.
-" The expressions below ensure that all valid number literals are
-" highlighted, and invalid number literals are not.  For example,
-"
-" - a decimal point in '4.' at the end of a line is highlighted,
-" - a second dot in 1.0.0 is not highlighted,
-" - 08 is not highlighted,
-" - 08e0 or 08j are highlighted,
-"
-" and so on, as specified in the 'Python Language Reference'.
-" http://docs.nolli.org/reference/lexical_analysis.html#numeric-literals
-" numbers (including longs and complex)
-syn match   nolliNumber        "\<0[oO]\=\o\+[Ll]\=\>"
-syn match   nolliNumber        "\<0[xX]\x\+[Ll]\=\>"
-syn match   nolliNumber        "\<0[bB][01]\+[Ll]\=\>"
-syn match   nolliNumber        "\<\%([1-9]\d*\|0\)[Ll]\=\>"
-syn match   nolliNumber        "\<\d\+[jJ]\>"
-syn match   nolliNumber        "\<\d\+[eE][+-]\=\d\+[jJ]\=\>"
-syn match   nolliNumber
-      \ "\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@="
-syn match   nolliNumber
-      \ "\%(^\|\W\)\@<=\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>"
+hi def link     nolliType              Type
+hi def link     nolliSignedInts        Type
+hi def link     nolliFloats            Type
+hi def link     nolliComplexes         Type
 
-" Group the built-ins in the order in the 'Python Library Reference' for
-" easier comparison.
-" Python built-in functions are in alphabetical order.
+" Treat func specially: it's a declaration at the start of a line, but a type
+" elsewhere. Order matters here.
+syn match       nolliType              /\<func\>/
+" syn match       nolliDeclaration       /^func\>/
 
-" contants
-syn keyword nolliConstant    true false nil
-syn keyword nolliConstant    stdout stderr stdin
+" Predefined functions and values
+syn keyword     nolliBuiltins          append cap close complex copy delete imag len
+syn keyword     nolliBuiltins          make new panic print println real recover
+syn keyword     nolliConstants         iota true false nil
 
-" built-in functions
-syn keyword nolliBuiltin     typeof typedef
-syn keyword nolliBuiltin     bool char int real str list map file
-syn keyword nolliBuiltin     exit
-syn keyword nolliBuiltin     print
-syn keyword nolliBuiltin     assert
-syn keyword nolliBuiltin     fopen fclose fread fwrite
-syn keyword nolliBuiltin     input
-syn keyword nolliBuiltin     range
-"syn keyword nolliBuiltin     len sum max min
-"syn keyword nolliBuiltin     abs
-"syn keyword nolliBuiltin     round
-"syn keyword nolliBuiltin     divmod
-"syn keyword nolliBuiltin     del
-"syn keyword nolliBuiltin     hash
-"syn keyword nolliBuiltin     chr ord
-"syn keyword nolliBuiltin     reversed sorted
-"syn keyword nolliBuiltin     zip
+hi def link     nolliBuiltins          Keyword
+hi def link     nolliConstants         Keyword
 
-"syn keyword nolliExceptions    Exception
+" Comments; their contents
+syn keyword     nolliTodo              contained TODO FIXME XXX BUG
+syn cluster     nolliCommentGroup      contains=nolliTodo
+" syn region      nolliComment           start="/\*" end="\*/" contains=@nolliCommentGroup,@Spell
+syn region      nolliComment           start="#" end="$" contains=@nolliCommentGroup,@Spell
 
-" Sync at the beginning of class, function, or method definition.
-syn sync match nolliSync grouphere NONE "^\s*\%(func\|class\)\s\+\h\w*\s*("
+hi def link     nolliComment           Comment
+hi def link     nolliTodo              Todo
 
-" The default highlight links.  Can be overridden later.
-hi def link nolliStatement       Statement
-hi def link nolliConditional     Conditional
-hi def link nolliRepeat          Repeat
-hi def link nolliOperator        Operator
-hi def link nolliException       Exception
-hi def link nolliInclude         Include
-hi def link nolliFunction        Function
-hi def link nolliComment         Comment
-hi def link nolliTodo            Todo
-hi def link nolliString          String
-hi def link nolliRawString       String
-hi def link nolliEscape          Special
-hi def link nolliNumber          Number
-hi def link nolliBuiltin         Define
-hi def link nolliConstant        Special
-hi def link nolliExceptions      Structure
-hi def link nolliCurlyError      Error
+" nolli escapes
+syn match       nolliEscapeOctal       display contained "\\[0-7]\{3}"
+syn match       nolliEscapeC           display contained +\\[abfnrtv\\'"]+
+syn match       nolliEscapeX           display contained "\\x\x\{2}"
+syn match       nolliEscapeU           display contained "\\u\x\{4}"
+syn match       nolliEscapeBigU        display contained "\\U\x\{8}"
+syn match       nolliEscapeError       display contained +\\[^0-7xuUabfnrtv\\'"]+
+
+hi def link     nolliEscapeOctal       nolliSpecialString
+hi def link     nolliEscapeC           nolliSpecialString
+hi def link     nolliEscapeX           nolliSpecialString
+hi def link     nolliEscapeU           nolliSpecialString
+hi def link     nolliEscapeBigU        nolliSpecialString
+hi def link     nolliSpecialString     Special
+hi def link     nolliEscapeError       Error
+
+" Strings and their contents
+syn cluster     nolliStringGroup       contains=nolliEscapeOctal,nolliEscapeC,nolliEscapeX,nolliEscapeU,nolliEscapeBigU,nolliEscapeError
+syn region      nolliString            start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@nolliStringGroup
+syn region      nolliRawString         start=+`+ end=+`+
+
+hi def link     nolliString            String
+hi def link     nolliRawString         String
+
+" Characters; their contents
+syn cluster     nolliCharacterGroup    contains=nolliEscapeOctal,nolliEscapeC,nolliEscapeX,nolliEscapeU,nolliEscapeBigU
+syn region      nolliCharacter         start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=@nolliCharacterGroup
+
+hi def link     nolliCharacter         Character
+
+" Regions
+syn region      nolliBlock             start="{" end="}" transparent fold
+syn region      nolliParen             start='(' end=')' transparent
+
+" Integers
+syn match       nolliDecimalInt        "\<\d\+\([Ee]\d\+\)\?\>"
+syn match       nolliHexadecimalInt    "\<0x\x\+\>"
+syn match       nolliOctalInt          "\<0\o\+\>"
+syn match       nolliOctalError        "\<0\o*[89]\d*\>"
+
+hi def link     nolliDecimalInt        Integer
+hi def link     nolliHexadecimalInt    Integer
+hi def link     nolliOctalInt          Integer
+hi def link     Integer             Number
+
+" Floating point
+syn match       nolliFloat             "\<\d\+\.\d*\([Ee][-+]\d\+\)\?\>"
+syn match       nolliFloat             "\<\.\d\+\([Ee][-+]\d\+\)\?\>"
+syn match       nolliFloat             "\<\d\+[Ee][-+]\d\+\>"
+
+hi def link     nolliFloat             Float
+
+" Imaginary literals
+syn match       nolliImaginary         "\<\d\+i\>"
+syn match       nolliImaginary         "\<\d\+\.\d*\([Ee][-+]\d\+\)\?i\>"
+syn match       nolliImaginary         "\<\.\d\+\([Ee][-+]\d\+\)\?i\>"
+syn match       nolliImaginary         "\<\d\+[Ee][-+]\d\+i\>"
+
+hi def link     nolliImaginary         Number
+
+" Search backwards for a global declaration to start processing the syntax.
+"syn sync match nolliSync grouphere NONE /^\(const\|var\|type\|func\)\>/
+
+" There's a bug in the implementation of grouphere. For now, use the
+" following as a more expensive/less precise workaround.
+syn sync minlines=500
 
 let b:current_syntax = "nolli"
-
 " vim:set sw=4 sts=4 et:
