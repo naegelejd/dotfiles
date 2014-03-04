@@ -7,9 +7,9 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ZSH aliases
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -45,7 +45,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode extract history history-substring-search colorize git osx python go)
+plugins=(vi-mode extract history history-substring-search colorize git osx python go terminalapp django)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,7 +70,7 @@ export PATH="\
 /usr/local/ismrmrd/bin:\
 /usr/local/ge-ismrmrd/bin:\
 /usr/local/dcmtk/bin:\
-/Applications/MATLAB_R2013a.app/bin"
+/Applications/MATLAB_R2013b.app/bin"
 
 export DYLD_FALLBACK_LIBRARY_PATH="\
 /Users/naegelejd/abin:\
