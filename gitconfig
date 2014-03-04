@@ -1,0 +1,20 @@
+[http "https://fmrif-intranet.nimh.nih.gov"]
+	sslverify = false
+[user]
+	name = Joseph Naegele
+	email = joseph.naegele@gmail.com
+[push]
+	default = simple
+[color]
+	ui = auto
+[core]
+	ignorecase = true
+	editor = vim
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	up = rebase
+	ci = commit
+
+# vim: set noexpandtab:retab!:

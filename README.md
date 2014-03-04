@@ -1,5 +1,4 @@
-vimrc
-======
+dotfiles
+========
 
-Symlink this directory to `~/.vim`
-Symlink `vimrc` `to ~/.vimrc`
+Just using Github to host my dotfiles for faster set up on VMs, etc.
