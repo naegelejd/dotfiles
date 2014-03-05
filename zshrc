@@ -53,24 +53,15 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="\
 /usr/local/bin:\
-/bin:\
-/usr/bin:\
 /sbin:\
 /usr/sbin:\
-/usr/local/bin:\
+/bin:\
+/usr/bin:\
 /opt/X11/bin:\
-/usr/texbin:\
-/Users/naegelejd/bin:\
-/Users/naegelejd/code/go/bin:\
-/Users/naegelejd/code/scratch/scripts:\
-/Users/naegelejd/.cabal/bin:\
-/usr/local/Cellar/go/1.2/libexec/bin:\
-/Users/naegelejd/abin:\
-/usr/local/gadgetron/bin:\
-/usr/local/ismrmrd/bin:\
-/usr/local/ge-ismrmrd/bin:\
-/usr/local/dcmtk/bin:\
-/Applications/MATLAB_R2013b.app/bin"
+$HOME/bin:\
+$HOME/code/scratch/scripts:\
+$HOME/.cabal/bin:\
+$HOME/abin"
 
 export DYLD_FALLBACK_LIBRARY_PATH="\
 /Users/naegelejd/abin:\
@@ -101,8 +92,8 @@ export WORKON_HOME=$HOME/.venvs
 
 # Go
 export GOROOT=/usr/local/Cellar/go/1.2.1/libexec
-export GOPATH=$HOME/code/go:$HOME/code/scratch/go
-export GOBIN=$HOME/code/go/bin
+export GOPATH=$HOME:$HOME/code/scratch/go
+export GOBIN=$HOME/bin
 
 export PATH=$GOROOT/bin:$GOBIN:$PATH
 
