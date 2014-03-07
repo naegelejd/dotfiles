@@ -59,7 +59,7 @@ export PATH="\
 /usr/bin:\
 /opt/X11/bin:\
 $HOME/bin:\
-$HOME/code/scratch/scripts:\
+$HOME/src/snippets/scripts:\
 $HOME/.cabal/bin:\
 $HOME/abin"
 
