@@ -5,7 +5,11 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+
+# favorites: wedisagree, nanotech, rixius, fletcherm, apple, sporty_256,
+#       bira, dpoggi, steef, kphoen, sorin, fishy
+ZSH_THEME="random"
 
 # ZSH aliases
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -45,7 +49,7 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode extract history history-substring-search colorize git osx python go terminalapp django)
+plugins=(vi-mode extract history history-substring-search colorize themes git go brew python django)
 
 source $ZSH/oh-my-zsh.sh
 
