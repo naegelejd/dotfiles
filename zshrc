@@ -7,8 +7,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 
-# favorites: wedisagree, nanotech, rixius, fletcherm, apple, sporty_256,
-#       bira, dpoggi, steef, kphoen, sorin, fishy
+# favorites: wedisagree, nanotech, rixius, fletcherm, apple, jnrowe,
+#       sporty_256, bira, dpoggi, steef, kphoen, sorin, fishy
 ZSH_THEME="random"
 
 # ZSH aliases
@@ -104,5 +104,8 @@ export PATH=$GOROOT/bin:$GOBIN:$PATH
 alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
 alias valgrindfull="valgrind --dsymutil=yes --leak-check=full"
 alias clang++11="clang++ -std=c++11 -stdlib=libc++"
+
+# Add Homebrew libxml2 python modules to PYTHONPATH
+export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
 
 source $HOME/.ismrmrdrc
