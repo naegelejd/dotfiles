@@ -56,20 +56,15 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="\
+$HOME/bin:\
+$HOME/src/snippets/scripts:\
+$HOME/.cabal/bin:\
 /usr/local/bin:\
 /sbin:\
 /usr/sbin:\
 /bin:\
 /usr/bin:\
-/opt/X11/bin:\
-$HOME/bin:\
-$HOME/src/snippets/scripts:\
-$HOME/.cabal/bin:\
-$HOME/abin"
-
-export DYLD_FALLBACK_LIBRARY_PATH="\
-/Users/naegelejd/abin:\
-"
+/opt/X11/bin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
