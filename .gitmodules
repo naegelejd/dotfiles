@@ -54,3 +54,7 @@
 	path = vim/bundle/vim-ebnf
 	url = https://github.com/killphi/vim-ebnf.git
 	branch = master
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+	branch = master
