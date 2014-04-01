@@ -1,6 +1,6 @@
 export ISMRMRD_HOME=/usr/local/ismrmrd
 export GADGETRON_HOME=/usr/local/gadgetron
-export MATLAB_HOME=/Applications/MATLAB_R2013a.app
+export MATLAB_HOME=/Applications/MATLAB_R2014a.app
 export GE_TOOLS_HOME=/usr/local/ge-tools
 export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
 

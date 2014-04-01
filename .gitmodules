@@ -38,10 +38,6 @@
 	path = vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets
 	branch = master
-[submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
-	url = https://github.com/tpope/vim-markdown
-	branch = master
 [submodule "vim/bundle/vim-snipmate"]
 	path = vim/bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate
