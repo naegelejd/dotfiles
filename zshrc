@@ -6,10 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-
-# favorites: wedisagree, nanotech, rixius, fletcherm, apple, jnrowe,
-#       sporty_256, bira, dpoggi, steef, kphoen, sorin, fishy
-ZSH_THEME="random"
+ZSH_THEME="apple"
 
 # ZSH aliases
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -102,5 +99,9 @@ alias clang++11="clang++ -std=c++11 -stdlib=libc++"
 
 # Add Homebrew libxml2 python modules to PYTHONPATH
 export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
+
+# Afni
+export PATH=$PATH:$HOME/abin
+export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/abin
 
 source $HOME/.ismrmrdrc
