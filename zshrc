@@ -100,6 +100,9 @@ alias clang++11="clang++ -std=c++11 -stdlib=libc++"
 # Add Homebrew libxml2 python modules to PYTHONPATH
 export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
 
+# MacTex
+export PATH=$PATH:/usr/texbin
+
 # Afni
 export PATH=$PATH:$HOME/abin
 export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/abin
