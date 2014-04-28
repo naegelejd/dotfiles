@@ -99,6 +99,10 @@ endif
 call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 
+""""""""""""""""""""""""""""""" vim-markdown """""""""""""""""""""""""""""""""
+
+let g:vim_markdown_folding_disabled=1
+
 """"""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""
 
 " don't attempt to autocomplete after any symbols, spaces, etc.
