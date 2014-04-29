@@ -56,7 +56,9 @@ set expandtab     " convert tabs to spaces
 set softtabstop=4
 set shiftwidth=4
 
-set nolist              " do not highlight whitespace
+set list
+set listchars=tab:\|·,trail:·   " Show hidden chars (no eol marker)
+
 set shiftround          " round indent to multiple of shiftwidth
 
 set showmatch           " show matching parenthesis
@@ -184,18 +186,12 @@ au BufWinEnter * match TrailingWhitespace /\s\+$/
 " Clear matches after leaving a window for performance reasons
 au BufWinLeave * call clearmatches()
 
-" Highligh tabs
-highlight BadTabs ctermbg=darkgreen guibg=darkgreen
-2match BadTabs /\t/
-au ColorScheme * highlight BadTabs ctermbg=darkgreen guibg=darkgreen
-
 " For full syntax highlighting:
 let python_highlight_all=1
 
 " Highlight bad spaces in C code
 let c_space_errors = 1
 
-" Delete trailing white space!!!
 fu! DeleteTrailingWS()
   execute "normal mz"
   %s/\s\+$//ge
