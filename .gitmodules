@@ -58,3 +58,7 @@
 	path = vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown
 	branch = master
+[submodule "vim/bundle/julia-vim"]
+	path = vim/bundle/julia-vim
+	url = https://github.com/JuliaLang/julia-vim
+	branch = master
