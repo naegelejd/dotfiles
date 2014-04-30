@@ -62,3 +62,7 @@
 	path = vim/bundle/julia-vim
 	url = https://github.com/JuliaLang/julia-vim
 	branch = master
+[submodule "vim/bundle/rust.vim"]
+	path = vim/bundle/rust.vim
+	url = https://github.com/wting/rust.vim
+	branch = master

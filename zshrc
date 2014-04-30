@@ -46,7 +46,7 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode extract history history-substring-search colorize themes git go brew python django)
+plugins=(vi-mode extract history history-substring-search colorize themes git tmux go brew python django)
 
 source $ZSH/oh-my-zsh.sh
 
