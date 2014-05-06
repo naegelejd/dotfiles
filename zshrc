@@ -46,7 +46,7 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode extract history history-substring-search colorize themes git tmux go brew python django)
+plugins=(vi-mode extract history history-substring-search colorize themes git go brew python django)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,6 +77,7 @@ fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+unset SSH_ASKPASS   # prevent password GUI on Linux
 
 # Homebrew
 export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
@@ -88,7 +89,7 @@ export WORKON_HOME=$HOME/.venvs
 
 # Go
 export GOROOT=/usr/local/Cellar/go/1.2.1/libexec
-export GOPATH=$HOME:$HOME/code/scratch/go
+export GOPATH=$HOME:$HOME/src/scratch/go
 export GOBIN=$HOME/bin
 
 export PATH=$GOROOT/bin:$GOBIN:$PATH

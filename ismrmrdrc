@@ -1,8 +1,6 @@
 export ISMRMRD_HOME=/usr/local/ismrmrd
 export GADGETRON_HOME=/usr/local/gadgetron
-export MATLAB_HOME=/Applications/MATLAB_R2014a.app
 export GE_TOOLS_HOME=/usr/local/ge-tools
-export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
 
 export PATH=$GE_TOOLS_HOME/bin:$PATH
 export PATH=$ISMRMRD_HOME/bin:$PATH
@@ -13,8 +11,13 @@ export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
 export DYLD_FALLBACK_LIBRARY_PATH=$GADGETRON_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
 export DYLD_FALLBACK_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
-export PYTHONPATH=$ISMRMRD_HOME/python:$GADGETRON_HOME/lib:$PYTHONPATH
-export PYTHONPATH=$PYTHONPATH:/usr/local/opt/libxml2/lib/python2.7/site-packages
+if [[ $(uname) == "Darwin" ]]; then
+    export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
+    export PYTHONPATH=$ISMRMRD_HOME/python:$GADGETRON_HOME/lib:$PYTHONPATH
+    export PYTHONPATH=$PYTHONPATH:/usr/local/opt/libxml2/lib/python2.7/site-packages
+
+    export MATLAB_HOME=/Applications/MATLAB_R2014a.app
+fi
 
 export DOCBOOKDIR=/usr/local/Cellar/docbook-xsl/1.78.1/docbook-xsl/html
 
