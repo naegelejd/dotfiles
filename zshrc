@@ -81,6 +81,8 @@ unset SSH_ASKPASS   # prevent password GUI on Linux
 
 # Homebrew
 export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
+# Some tools like GHC need Homebrew dyld path explicitly defined
+export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
 # Virtualenv
 export VIRTUALENVWRAPPER_PYTHON=python2.7
@@ -88,10 +90,9 @@ export WORKON_HOME=$HOME/.venvs
 . virtualenvwrapper.sh  # should be on $PATH
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.2.1/libexec
+export GOROOT=/usr/local/Cellar/go/1.2.2/libexec
 export GOPATH=$HOME:$HOME/src/scratch/go
 export GOBIN=$HOME/bin
-
 export PATH=$GOROOT/bin:$GOBIN:$PATH
 
 alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
