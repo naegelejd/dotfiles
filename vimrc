@@ -81,6 +81,8 @@ set fileformats=unix,mac,dos    " file format precedence
 
 set viminfo^=%      " Remember info about open buffers on close
 
+set virtualedit+=block  " Allow block selection of shape
+
 """"""" Fonts """""""""
 if has("gui_macvim") || has("gui_mac")
     set guifont=Menlo:h12
