@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 """
-Symlinks every file/directory lacking an extension from this repo to $HOME/
+Symlinks every file/directory whose name is not in the ignore list and
+does not start with a '.' to $HOME/
 """
 import os
 from os.path import basename, expanduser, dirname, realpath, join
 import sys
 
-ignore = ['README.md', 'install.py', 'uninstall.py']
+ignore = ['README.md', 'setup.py']
 home = expanduser('~')
 
 def _install(local, link):
@@ -40,8 +41,8 @@ def uninstall(dotfiles):
 
 def main():
     prog = basename(sys.argv[0])
-    usage = "{} [-i|-u|-h]".format(prog)
-    hlp = "{}\n\t-i\tinstall\n\t-u\tuninstall".format(usage)
+    usage = "{0} [-i|-u|-h]".format(prog)
+    hlp = "{0}\n\t-i\tinstall\n\t-u\tuninstall".format(usage)
 
     dotfiles = dirname(realpath(expanduser(sys.argv[0])))
 
