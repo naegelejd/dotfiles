@@ -149,17 +149,11 @@ syntax on               " Color syntax highlighting
 
 " if necessary, specify that the terminal emulator is 256 color
 "set term=xterm-256color
-if has("gui_running")
-    colorscheme solarized
-else
-    set background=dark
-    colorscheme jellybeans
-endif
 
 " ensure solarized looks good in terminal
 let g:solarized_termcolors=256
 
-let s:mycolors = ['jellybeans', 'desert256', 'zenburn', 'wombat', 'molokai', 'mayansmoke', 'solarized']
+let s:mycolors = ['default', 'jellybeans', 'desert256', 'zenburn', 'wombat', 'molokai', 'mayansmoke', 'solarized']
 function! NextColor()
     if len(s:mycolors) == 0
         execute 'colorscheme default'
