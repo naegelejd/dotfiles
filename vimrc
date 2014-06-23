@@ -22,6 +22,8 @@ set smartcase           " Do smart things with capitalization when searching
 set hlsearch            " Highlight search matches
 set incsearch           " 'relatime' search matching
 
+set tildeop             " Make ~ act like a normal operator
+
 set lazyredraw          " Don't redraw while executing macros
 set magic               " regular expressions
 
@@ -300,7 +302,14 @@ map <leader>s? z=
 nmap <silent> <leader>t :tag 
 nmap <silent> <leader>p :pop<CR>
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
+" Search for selected text, forwards or backwards (vim.wikia.com)
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>

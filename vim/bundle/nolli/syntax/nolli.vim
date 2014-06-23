@@ -10,49 +10,45 @@ endif
 
 syn case match
 
-syn keyword     nolliDirective         module import
-syn keyword     nolliDeclaration       var const type
-syn keyword     nolliDeclType          struct iface
+syn keyword     nolliDirective          package from import
+syn keyword     nolliDeclKind           var const
+syn keyword     nolliDef                alias class interface
 
-hi def link     nolliDirective         Statement
-hi def link     nolliDeclaration       Keyword
-hi def link     nolliDeclType          Keyword
-
-" Keywords within functions
-syn keyword     nolliStatement         defer return break continue
-syn keyword     nolliConditional       if else
-" syn keyword     nolliConditional       switch select
-" syn keyword     nolliLabel             case default
-syn keyword     nolliRepeat            for while
-
-hi def link     nolliStatement         Statement
-hi def link     nolliConditional       Conditional
-hi def link     nolliLabel             Label
-hi def link     nolliRepeat            Repeat
-
-" Predefined types
-syn keyword     nolliType              bool str error
-syn keyword     nolliSignedInts        char int
-syn keyword     nolliFloats            real
-syn keyword     nolliComplexes         cplx64 complex128
-
-hi def link     nolliType              Type
-hi def link     nolliSignedInts        Type
-hi def link     nolliFloats            Type
-hi def link     nolliComplexes         Type
+hi def link     nolliDirective          Statement
+hi def link     nolliDeclKind           Function
+hi def link     nolliDef                Macro
 
 " Treat func specially: it's a declaration at the start of a line, but a type
 " elsewhere. Order matters here.
-syn match       nolliType              /\<func\>/
-" syn match       nolliDeclaration       /^func\>/
+syn match       nolliType               /\<func\>/
+syn match       nolliFunction           /\(^func\|\ \+func\)\>/
+
+hi def link     nolliFunction           Keyword
+
+" Keywords within functions
+syn keyword     nolliStatement          defer return break continue
+syn keyword     nolliConditional        if else
+syn keyword     nolliLoop               for while in
+
+hi def link     nolliStatement          Statement
+hi def link     nolliConditional        Conditional
+hi def link     nolliLoop               Repeat
+
+" Predefined types
+syn keyword     nolliType               bool str error
+syn keyword     nolliInts               char int
+syn keyword     nolliFloats             real cplx
+
+hi def link     nolliType               Type
+hi def link     nolliInts               Type
+hi def link     nolliFloats             Type
 
 " Predefined functions and values
-syn keyword     nolliBuiltins          append cap close complex copy delete imag len
-syn keyword     nolliBuiltins          make new panic print println real recover
-syn keyword     nolliConstants         iota true false nil
+syn keyword     nolliBuiltins          print
+syn keyword     nolliConstants         true false nil
 
-hi def link     nolliBuiltins          Keyword
-hi def link     nolliConstants         Keyword
+hi def link     nolliBuiltins          Directory
+hi def link     nolliConstants         Constant
 
 " Comments; their contents
 syn keyword     nolliTodo              contained TODO FIXME XXX BUG
