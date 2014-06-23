@@ -50,6 +50,10 @@ plugins=(vi-mode extract history history-substring-search colorize themes git go
 
 source $ZSH/oh-my-zsh.sh
 
+# re-bind UP and DOWN arrow keys since this is broken in oh-my-zsh
+bindkey '\e[A' history-substring-search-up
+bindkey '\e[B' history-substring-search-down
+
 # User configuration
 
 export PATH="\
