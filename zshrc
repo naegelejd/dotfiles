@@ -79,6 +79,9 @@ fi
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 unset SSH_ASKPASS   # prevent password GUI on Linux
 
+# stop putting '._*' files into tarballs (extended attrs)
+export COPYFILE_DISABLE=1
+
 # Homebrew
 export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
 # Some tools like GHC need Homebrew dyld path explicitly defined
