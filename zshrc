@@ -67,6 +67,10 @@ $HOME/.cabal/bin:\
 /usr/bin:\
 /opt/X11/bin"
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    random-color-terminal-app.sh
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
