@@ -48,9 +48,10 @@ set wildignore+=*/.git/*,*/.DS_Store
 
 filetype off                " Turn off filetype recognition first, to force a reload
 filetype plugin indent on   " Filetype recognition
-set autoindent
 " set smartindent   " (Prefer filetype indent)
 " set cindent       " (Prefer filetype indent)
+set formatoptions=tcroqnlj
+set cinoptions=:0,l1,N-s,t0,+2*N
 
 set smarttab      " Not necessary since I'm not explicitly using hard tabs
 set expandtab     " convert tabs to spaces
@@ -219,12 +220,6 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
 """""""" Filetype-specific """"""""
 
-" C formatting (comments, code indentation...)
-" formatoptions: wrap and auto-format comment blocks and such
-" cinoptions: (l1 means align with case label, t0 means don't indent function return type)
-" au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.l,*.y set formatoptions=tcqlron cinoptions=l1,t0
-au BufRead,BufNewFile * set formatoptions=tcqlron cinoptions=l1,t0
-
 au FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
 au FileType html,markdown setlocal softtabstop=2 shiftwidth=2
 
@@ -313,3 +308,17 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+function! SendBuffer(port)
+python << EOF
+import vim
+import socket
+port = int(vim.eval("a:port"))
+ADDR = ('localhost', port)
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect(ADDR)
+for line in vim.current.buffer:
+    sock.send(line)
+sock.close()
+EOF
+endfunction
