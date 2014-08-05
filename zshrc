@@ -68,7 +68,7 @@ $HOME/.cabal/bin:\
 /opt/X11/bin"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    random-color-terminal-app.sh
+    osascript $HOME/src/snippets/scripts/RandomColorTerminal.app.scpt
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
