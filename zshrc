@@ -101,7 +101,7 @@ export WORKON_HOME=$HOME/.venvs
 . virtualenvwrapper.sh  # should be on $PATH
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.3/libexec
+export GOROOT=/usr/local/Cellar/go/1.3.1/libexec
 export GOPATH=$HOME:$HOME/src/scratch/go
 export GOBIN=$HOME/bin
 export PATH=$GOROOT/bin:$GOBIN:$PATH
@@ -121,3 +121,7 @@ export PATH=$PATH:$HOME/abin
 export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/abin
 
 source $HOME/.ismrmrdrc
+
+source /Users/naegelejd/.rvm/scripts/rvm
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

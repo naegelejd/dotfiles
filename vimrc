@@ -203,6 +203,15 @@ fu! DeleteAllTabs()
   exe "normal `z"
 endfu
 
+fu! PadOperators()
+    " Pad binary operators with a space on either side
+    " FIXME! - Breaks 2-char operators (+=, <=, ==)
+    exe "normal mz"
+    %s/\([^ ]\)\([+\-*/%|^&<>=]=?\)/\1 \2 /ge
+    %s/\([<>=+\-/*?&|^%]\)\([^ ]\)/\1 \2 /ge
+    exe "normal `z"
+endfu
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last cursor position
 au BufReadPost *
@@ -277,6 +286,9 @@ nmap <silent> <leader>dtw :call DeleteTrailingWS()<CR>
 
 " delete all tabs in the buffer
 nmap <silent> <leader>dat :call DeleteAllTabs()<CR>
+
+" ensure all binary operators are padded with a space on either side
+nmap <silent> <leader>po :call PadOperators()<CR>
 
 " redraw screen (Since I mapped Ctrl-L to window navigation)
 nmap <leader>r :redraw!<CR>
