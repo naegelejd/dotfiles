@@ -7,18 +7,26 @@ export PATH=$ISMRMRD_HOME/bin:$PATH
 export PATH=$GADGETRON_HOME/bin:$PATH
 export PATH=$MATLAB_HOME/bin:$PATH
 
-export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
-export DYLD_FALLBACK_LIBRARY_PATH=$GADGETRON_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
-export DYLD_FALLBACK_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
-
 if [[ $(uname) == "Darwin" ]]; then
+    export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
+    export DYLD_FALLBACK_LIBRARY_PATH=$GADGETRON_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
+    export DYLD_FALLBACK_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
     export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
     export PYTHONPATH=$ISMRMRD_HOME/python:$GADGETRON_HOME/lib:$PYTHONPATH
     export PYTHONPATH=$PYTHONPATH:/usr/local/opt/libxml2/lib/python2.7/site-packages
 
     export MATLAB_HOME=/Applications/MATLAB_R2014a.app
+
+    export DOCBOOKDIR=/usr/local/Cellar/docbook-xsl/1.78.1/docbook-xsl/html
+else
+    export LD_LIBRARY_PATH=$ISMRMRD_HOME/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$GADGETRON_HOME/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$LD_LIBRARY_PATH
 fi
 
-export DOCBOOKDIR=/usr/local/Cellar/docbook-xsl/1.78.1/docbook-xsl/html
+if [[ $(hostname) =~ erbium.* ]]; then
+    . /fmrif/local/etc/profile.d/fmrif.sh
+fi
 
 # vim: set syntax=sh:
