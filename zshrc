@@ -1,8 +1,11 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Alternative customization directory (in dotfiles repo)
+ZSH_CUSTOM=$HOME/.oh-my-zsh_custom
+
 # Set this to "random" to load a random theme
-ZSH_THEME="apple"
+ZSH_THEME="naegelejd"
 
 # ZSH aliases
 alias zshconfig="$EDITOR ~/.zshrc"
