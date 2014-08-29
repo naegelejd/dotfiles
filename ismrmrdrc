@@ -1,7 +1,12 @@
-export ISMRMRD_HOME=/usr/local/ismrmrd
-export GADGETRON_HOME=/usr/local/gadgetron
-export GE_TOOLS_HOME=/usr/local/ge-tools
+if [[ $(uname) == "Darwin" ]]; then
+    INSTALL_ROOT=/usr
+else
+    INSTALL_ROOT=$HOME
+fi
 
+export ISMRMRD_HOME=$INSTALL_ROOT/local/ismrmrd
+export GADGETRON_HOME=$INSTALL_ROOT/local/gadgetron
+export GE_TOOLS_HOME=$INSTALL_ROOT/local/ge-tools
 export PATH=$GE_TOOLS_HOME/bin:$PATH
 export PATH=$ISMRMRD_HOME/bin:$PATH
 export PATH=$GADGETRON_HOME/bin:$PATH
@@ -24,6 +29,8 @@ else
     export LD_LIBRARY_PATH=$GADGETRON_HOME/lib:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$LD_LIBRARY_PATH
 fi
+
+
 
 if [[ $(hostname) =~ erbium.* ]]; then
     . /fmrif/local/etc/profile.d/fmrif.sh
