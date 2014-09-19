@@ -38,6 +38,7 @@ $HOME/bin:\
 $HOME/src/snippets/scripts:\
 $HOME/.cabal/bin:\
 /usr/local/bin:\
+/usr/local/sbin:\
 /sbin:\
 /usr/sbin:\
 /bin:\
@@ -83,9 +84,6 @@ export PATH=$GOROOT/bin:$GOBIN:$PATH
 alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
 alias valgrindfull="valgrind --dsymutil=yes --leak-check=full"
 alias clang++11="clang++ -std=c++11 -stdlib=libc++"
-
-# Add Homebrew libxml2 python modules to PYTHONPATH
-export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
 
 # MacTex
 export PATH=$PATH:/usr/texbin

@@ -17,9 +17,7 @@ if [[ $(uname) == "Darwin" ]]; then
     export DYLD_FALLBACK_LIBRARY_PATH=$GADGETRON_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
     export DYLD_FALLBACK_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
-    export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
     export PYTHONPATH=$ISMRMRD_HOME/python:$GADGETRON_HOME/lib:$PYTHONPATH
-    export PYTHONPATH=$PYTHONPATH:/usr/local/opt/libxml2/lib/python2.7/site-packages
 
     export MATLAB_HOME=/Applications/MATLAB_R2014a.app
 
