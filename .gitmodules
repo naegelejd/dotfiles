@@ -70,3 +70,7 @@
 	path = oh-my-zsh_custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	branch = master
+[submodule "vim/bundle/vim-io"]
+	path = vim/bundle/vim-io
+	url = https://github.com/andreimaxim/vim-io.git
+	branch = master
