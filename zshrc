@@ -76,7 +76,7 @@ export WORKON_HOME=$HOME/.venvs
 . virtualenvwrapper.sh  # should be on $PATH
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.3.2/libexec
+export GOROOT=/usr/local/Cellar/go/1.3.3/libexec
 export GOPATH=$HOME:$HOME/src/scratch/go
 export GOBIN=$HOME/bin
 export PATH=$GOROOT/bin:$GOBIN:$PATH
