@@ -10,6 +10,7 @@ ZSH_THEME="naegelejd"
 # ZSH aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias ppjson="python -mjson.tool"
 
 # Disabled:
 # CASE_SENSITIVE="true"
@@ -42,11 +43,22 @@ $HOME/.cabal/bin:\
 /sbin:\
 /usr/sbin:\
 /bin:\
-/usr/bin:\
-/opt/X11/bin"
+/usr/bin:"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     osascript $HOME/src/snippets/scripts/RandomColorTerminal.app.scpt
+
+    # Homebrew
+    export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
+    # Some tools like GHC need Homebrew dyld path explicitly defined
+    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
+    # MacTex
+    export PATH=$PATH:/usr/texbin
+
+    # X11 (for AFNI?)
+    export PATH=$PATH:/opt/X11/bin
+    export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/X11/lib
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -65,18 +77,13 @@ unset SSH_ASKPASS   # prevent password GUI on Linux
 # stop putting '._*' files into tarballs (extended attrs)
 export COPYFILE_DISABLE=1
 
-# Homebrew
-export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
-# Some tools like GHC need Homebrew dyld path explicitly defined
-export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
-
 # Virtualenv
 export VIRTUALENVWRAPPER_PYTHON=python2.7
 export WORKON_HOME=$HOME/.venvs
 . virtualenvwrapper.sh  # should be on $PATH
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.3.3/libexec
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME:$HOME/src/scratch/go
 export GOBIN=$HOME/bin
 export PATH=$GOROOT/bin:$GOBIN:$PATH
@@ -84,9 +91,6 @@ export PATH=$GOROOT/bin:$GOBIN:$PATH
 alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
 alias valgrindfull="valgrind --dsymutil=yes --leak-check=full"
 alias clang++11="clang++ -std=c++11 -stdlib=libc++"
-
-# MacTex
-export PATH=$PATH:/usr/texbin
 
 # Afni
 export PATH=$PATH:$HOME/abin
