@@ -229,7 +229,7 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
 """""""" Filetype-specific """"""""
 
-au FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
+au FileType make,go setlocal softtabstop=8 shiftwidth=8 noexpandtab
 au FileType html,markdown setlocal softtabstop=2 shiftwidth=2
 
 """""""" Mappings """"""""
