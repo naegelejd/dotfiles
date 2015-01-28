@@ -86,25 +86,11 @@ set viminfo^=%      " Remember info about open buffers on close
 
 set virtualedit+=block  " Allow block selection of shape
 
-""""""" Fonts """""""""
-if has("gui_macvim") || has("gui_mac")
-    set guifont=Menlo:h12
-elseif has("gui_gtk2")
-    set guifont=Deja\ Vu\ Sans\ Mono\ 10
-endif
-
-""""""" GUI """"""""
-if has("gui_running")
-    set lines=40 columns=192  " open maximized
-    set guitablabel=%M\ %t
-else
-    set t_Co=256
-endif
+set t_Co=256        " Set number of colors to 256 by default
 
 """""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
 
 call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
-
 
 """"""""""""""""""""""""""""""" vim-markdown """""""""""""""""""""""""""""""""
 
