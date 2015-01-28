@@ -232,6 +232,8 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 au FileType make,go setlocal softtabstop=8 shiftwidth=8 noexpandtab
 au FileType html,markdown setlocal softtabstop=2 shiftwidth=2
 
+au FileType go setlocal nolist
+
 """""""" Mappings """"""""
 
 let mapleader = ','     " The default is '\' but many people prefer ','
