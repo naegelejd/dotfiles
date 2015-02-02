@@ -7,10 +7,6 @@ fi
 export ISMRMRD_HOME=$INSTALL_ROOT/local/ismrmrd
 export GADGETRON_HOME=$INSTALL_ROOT/local/gadgetron
 export GE_TOOLS_HOME=$INSTALL_ROOT/local/ge-tools
-export PATH=$GE_TOOLS_HOME/bin:$PATH
-export PATH=$ISMRMRD_HOME/bin:$PATH
-export PATH=$GADGETRON_HOME/bin:$PATH
-export PATH=$MATLAB_HOME/bin:$PATH
 
 if [[ $(uname) == "Darwin" ]]; then
     export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
@@ -19,7 +15,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
     export PYTHONPATH=$ISMRMRD_HOME/python:$GADGETRON_HOME/lib:$PYTHONPATH
 
-    export MATLAB_HOME=/Applications/MATLAB_R2014a.app
+    export MATLAB_HOME=/Applications/MATLAB_R2014b.app
 
     export DOCBOOKDIR=/usr/local/Cellar/docbook-xsl/1.78.1/docbook-xsl/html
 else
@@ -28,6 +24,10 @@ else
     export LD_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$LD_LIBRARY_PATH
 fi
 
+export PATH=$GE_TOOLS_HOME/bin:$PATH
+export PATH=$ISMRMRD_HOME/bin:$PATH
+export PATH=$GADGETRON_HOME/bin:$PATH
+export PATH=$MATLAB_HOME/bin:$PATH
 
 
 if [[ $(hostname) =~ erbium.* ]]; then
