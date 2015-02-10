@@ -80,7 +80,6 @@ export COPYFILE_DISABLE=1
 # Virtualenv
 export VIRTUALENVWRAPPER_PYTHON=python2.7
 export WORKON_HOME=$HOME/.venvs
-. virtualenvwrapper.sh  # should be on $PATH
 
 # Go
 export GOPATH=$HOME
