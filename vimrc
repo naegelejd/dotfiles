@@ -46,6 +46,8 @@ set wildmenu                    " show list for autocomplete
 set wildmode=list:longest:full  " priority for tab completion
 set wildignore+=*/.git/*,*/.DS_Store
 
+set tags=./tags;$HOME
+
 filetype off                " Turn off filetype recognition first, to force a reload
 filetype plugin indent on   " Filetype recognition
 " set smartindent   " (Prefer filetype indent)
