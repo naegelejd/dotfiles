@@ -46,7 +46,7 @@ $HOME/.cabal/bin:\
 /usr/bin:"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    osascript $HOME/src/snippets/scripts/RandomColorTerminal.app.scpt
+    osascript $HOME/src/snippets/scripts/RandomColorTerminal.scpt
 
     # Homebrew
     export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
@@ -59,6 +59,20 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # X11 (for AFNI?)
     export PATH=$PATH:/opt/X11/bin
     export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/X11/lib
+
+    # If some fancy commands exist, print a fancy welcome!
+    exists() { type $1 > /dev/null 2>&1 }
+    welcome=""
+    if $(exists fortune); then
+        welcome="fortune"
+        if $(exists cowsay); then
+            welcome="${welcome} | cowsay -p -W 72 -f $HOME/.elephant.cow"
+            if $(exists lolcat); then
+                welcome="${welcome} | lolcat"
+            fi
+        fi
+    fi
+    eval ${welcome}
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
