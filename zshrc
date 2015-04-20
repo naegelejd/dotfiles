@@ -46,8 +46,6 @@ $HOME/.cabal/bin:\
 /usr/bin:"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    osascript $HOME/src/snippets/scripts/RandomColorTerminal.scpt
-
     # Homebrew
     export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
     # Some tools like GHC need Homebrew dyld path explicitly defined
@@ -111,3 +109,6 @@ export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/abin
 source $HOME/.ismrmrdrc
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/naegelejd/.travis/travis.sh ] && source /Users/naegelejd/.travis/travis.sh
