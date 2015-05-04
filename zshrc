@@ -108,6 +108,7 @@ export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/abin
 
 source $HOME/.ismrmrdrc
 
+export PATH="$PATH:$HOME/.gem/ruby/2.2.0/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # added by travis gem
