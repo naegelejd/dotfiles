@@ -62,10 +62,6 @@
 	path = vim/bundle/julia-vim
 	url = https://github.com/JuliaLang/julia-vim
 	branch = master
-[submodule "vim/bundle/rust.vim"]
-	path = vim/bundle/rust.vim
-	url = https://github.com/wting/rust.vim
-	branch = master
 [submodule "oh-my-zsh_custom/plugins/zsh-syntax-highlighting"]
 	path = oh-my-zsh_custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
