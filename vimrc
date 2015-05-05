@@ -3,10 +3,51 @@ if version < 702
     let g:loaded_tagbar = 1
 endif
 
-" Source Pathogen from bundle dir, rather than separate 'autoload' dir
-runtime bundle/pathogen/autoload/pathogen.vim
-
 set nocompatible        " Use Vim defaults
+
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Bundle 'gmarik/Vundle.vim'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'majutsushi/tagbar'
+
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+
+Bundle 'fatih/vim-go.git'
+Bundle 'rust-lang/rust.vim'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'killphi/vim-ebnf.git'
+Bundle 'raichoo/haskell-vim'
+Bundle 'JuliaLang/julia-vim'
+Bundle 'andreimaxim/vim-io.git'
+Bundle 'vim-scripts/lemon.vim'
+
+Bundle 'tomasr/molokai'
+Bundle 'nanotech/jellybeans.vim.git'
+Bundle 'altercation/vim-colors-solarized'
+
+Bundle 'naegelejd/vim-abbreviations'
+Bundle 'naegelejd/luci', {'rtp': 'etc/vim/'}
+Bundle 'naegelejd/nolli', {'rtp': 'etc/vim/'}
+Bundle 'naegelejd/vim-swig'
+
+call vundle#end()
+
+filetype plugin indent on   " Filetype recognition
+
 set mouse=a             " Automatically enable mouse usage
 set ttyfast
 set autowrite           " Automatically write buffer
@@ -48,8 +89,6 @@ set wildignore+=*/.git/*,*/.DS_Store
 
 set tags=./tags;$HOME
 
-filetype off                " Turn off filetype recognition first, to force a reload
-filetype plugin indent on   " Filetype recognition
 " set smartindent   " (Prefer filetype indent)
 " set cindent       " (Prefer filetype indent)
 set formatoptions=tcroqnlj
@@ -89,10 +128,6 @@ set viminfo^=%      " Remember info about open buffers on close
 set virtualedit+=block  " Allow block selection of shape
 
 set t_Co=256        " Set number of colors to 256 by default
-
-"""""""""""""""""""""""""""""""" Pathogen """"""""""""""""""""""""""""""""""""
-
-call pathogen#infect()  " adds all plugins in ~/.vim/bundle to runtime path
 
 """"""""""""""""""""""""""""""" vim-markdown """""""""""""""""""""""""""""""""
 
