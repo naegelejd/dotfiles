@@ -9,40 +9,41 @@ filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
 
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 
-Bundle 'fatih/vim-go.git'
-Bundle 'rust-lang/rust.vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'killphi/vim-ebnf.git'
-Bundle 'raichoo/haskell-vim'
-Bundle 'JuliaLang/julia-vim'
-Bundle 'andreimaxim/vim-io.git'
-Bundle 'vim-scripts/lemon.vim'
+Plugin 'fatih/vim-go.git'
+Plugin 'rust-lang/rust.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'killphi/vim-ebnf.git'
+Plugin 'raichoo/haskell-vim'
+Plugin 'JuliaLang/julia-vim'
+Plugin 'andreimaxim/vim-io.git'
+Plugin 'vim-scripts/lemon.vim'
 
-Bundle 'tomasr/molokai'
-Bundle 'nanotech/jellybeans.vim.git'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+Plugin 'nanotech/jellybeans.vim.git'
+Plugin 'altercation/vim-colors-solarized'
 
-Bundle 'naegelejd/vim-abbreviations'
-Bundle 'naegelejd/luci', {'rtp': 'etc/vim/'}
-Bundle 'naegelejd/nolli', {'rtp': 'etc/vim/'}
-Bundle 'naegelejd/vim-swig'
+Plugin 'naegelejd/vim-abbreviations'
+Plugin 'naegelejd/luci', {'rtp': 'etc/vim/'}
+Plugin 'naegelejd/nolli', {'rtp': 'etc/vim/'}
+Plugin 'naegelejd/vim-swig'
 
 call vundle#end()
 
@@ -128,6 +129,15 @@ set viminfo^=%      " Remember info about open buffers on close
 set virtualedit+=block  " Allow block selection of shape
 
 set t_Co=256        " Set number of colors to 256 by default
+
+
+"""""""""""""""""""""""""""""""""" vim-go """"""""""""""""""""""""""""""""""""
+
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_build_constraints = 1
 
 """"""""""""""""""""""""""""""" vim-markdown """""""""""""""""""""""""""""""""
 
