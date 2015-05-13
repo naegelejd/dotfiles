@@ -98,6 +98,11 @@ export GOPATH=$HOME
 export GOBIN=$HOME/bin
 export PATH=$GOROOT/bin:$GOBIN:$PATH
 
+# Rust
+export RUST_HOME=/usr/local/rust
+export DYLD_FALLBACK_LIBRARY_PATH=$RUST_HOME/lib
+export PATH=$RUST_HOME/bin:$PATH
+
 alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
 alias valgrindfull="valgrind --dsymutil=yes --leak-check=full"
 alias clang++11="clang++ -std=c++11 -stdlib=libc++"
