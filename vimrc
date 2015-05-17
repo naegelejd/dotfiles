@@ -26,6 +26,7 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
 
 Plugin 'fatih/vim-go.git'
 Plugin 'rust-lang/rust.vim'
