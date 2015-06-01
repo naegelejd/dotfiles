@@ -15,7 +15,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -300,6 +301,14 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " visual shifting (does not exit VISUAL MODE)
 vnoremap < <gv
 vnoremap > >gv
+
+" move cursor to after pasted yanked/pasted text
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" prevent command window from accidentally opening
+map q: :q
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
