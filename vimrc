@@ -36,11 +36,12 @@ Plugin 'killphi/vim-ebnf.git'
 Plugin 'raichoo/haskell-vim'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'andreimaxim/vim-io.git'
-Plugin 'vim-scripts/lemon.vim'
+Plugin 'lemon.vim'
 
 Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim.git'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'sonoma.vim'
 
 Plugin 'naegelejd/vim-abbreviations'
 Plugin 'naegelejd/luci', {'rtp': 'etc/vim/'}
@@ -135,6 +136,7 @@ set t_Co=256        " Set number of colors to 256 by default
 
 """""""""""""""""""""""""""""""""" vim-go """"""""""""""""""""""""""""""""""""
 
+let g:go_fmt_command = "goimports"  " remove this if it's too slow (default is gofmt)
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -164,8 +166,11 @@ nmap <F8> :TagbarToggle<CR>
 
 
 """""""""""""""""""""""""""""" Syntastic """""""""""""""""""""""""""""""""""""
-" SyntasticCheck()
-" Errors()
+" reminder: SyntasticCheck()
+" reminder: Errors()
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 let g:syntastic_error_symbol = '!'
 let g:syntastic_warning_symbol = '?'
@@ -173,6 +178,7 @@ let g:syntastic_warning_symbol = '?'
 " automatically show errors and close when fixed
 " let g:syntastic_auto_loc_list = 1
 
+" let g:syntastic_go_checkers = ['gofmt']
 let g:syntastic_c_checkers = ['make']
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_python_checkers = ['pyflakes']
