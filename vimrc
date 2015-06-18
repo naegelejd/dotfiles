@@ -15,8 +15,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'majutsushi/tagbar'
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -136,12 +136,7 @@ set t_Co=256        " Set number of colors to 256 by default
 
 """""""""""""""""""""""""""""""""" vim-go """"""""""""""""""""""""""""""""""""
 
-let g:go_fmt_command = "goimports"  " remove this if it's too slow (default is gofmt)
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_build_constraints = 1
+let g:go_fmt_fail_silently = 1  " don't pop up quickfix window
 
 """"""""""""""""""""""""""""""" vim-markdown """""""""""""""""""""""""""""""""
 
@@ -278,6 +273,12 @@ au FileType go setlocal nolist
 """""""" Mappings """"""""
 
 let mapleader = ','     " The default is '\' but many people prefer ','
+
+" Map 'jk' and 'jk' to ESC for simpler return to normal mode
+inoremap jk <ESC>
+inoremap kj <ESC>
+cnoremap jk <C-c>
+cnoremap kj <C-c>
 
 " Help with lazy SHIFT + ':' in command-line mode
 nnoremap ; :
