@@ -133,6 +133,8 @@ set virtualedit+=block  " Allow block selection of shape
 
 set t_Co=256        " Set number of colors to 256 by default
 
+let mapleader = ','     " The default is '\' but many people prefer ','
+
 
 """""""""""""""""""""""""""""""""" vim-go """"""""""""""""""""""""""""""""""""
 
@@ -152,13 +154,16 @@ let g:SuperTabNoCompleteAfter = [
         \ '<', '>', '[', ']', '{', '}', '(', ')',
         \ '\s', '^']
 
+"""""""""""""""""""""""""""""" NERDTree """"""""""""""""""""""""""""""""""""""
+
+nmap <leader>n :NERDTreeToggle<CR>
+
 """"""""""""""""""""""""""""""" Tagbar  """"""""""""""""""""""""""""""""""""""
 
 " Open Tagbar on left rather than (default) right
 let g:tagbar_left = 1
 let g:tagbar_width = 30
-nmap <F8> :TagbarToggle<CR>
-
+nmap <leader>tb :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""" Syntastic """""""""""""""""""""""""""""""""""""
 " reminder: SyntasticCheck()
