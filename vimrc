@@ -61,6 +61,7 @@ set autoread            " Automatically update files changed outside of vim
 set showcmd             " Show cmd counter
 set noshowmode          " Hide mode name at bottom of scren
 set ruler               " Show the cursor position all the time
+set cursorline          " Highlight current line
 set number              " Show line numbers
 set ignorecase          " Ignore case when searching
 set smartcase           " Do smart things with capitalization when searching
@@ -164,6 +165,10 @@ nmap <leader>n :NERDTreeToggle<CR>
 let g:tagbar_left = 1
 let g:tagbar_width = 30
 nmap <leader>tb :TagbarToggle<CR>
+
+""""""""""""""""""""""""""""""" YouCompleteMe  """"""""""""""""""""""""""""""""""""""
+
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 """""""""""""""""""""""""""""" Syntastic """""""""""""""""""""""""""""""""""""
 " reminder: SyntasticCheck()
