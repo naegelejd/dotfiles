@@ -9,15 +9,14 @@ export GADGETRON_HOME=$INSTALL_ROOT/local/gadgetron
 export GE_TOOLS_HOME=$INSTALL_ROOT/local/ge-tools
 
 if [[ $(uname) == "Darwin" ]]; then
+    export PYTHONPATH=$GADGETRON_HOME/share/gadgetron/python:$PYTHONPATH
+
+    export MATLAB_HOME=/Applications/MATLAB_R2015b.app
+
     export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
     export DYLD_FALLBACK_LIBRARY_PATH=$GADGETRON_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
     export DYLD_FALLBACK_LIBRARY_PATH=$GE_TOOLS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
-
-    export PYTHONPATH=$GADGETRON_HOME/share/gadgetron/python:$PYTHONPATH
-
-    export MATLAB_HOME=/Applications/MATLAB_R2014b.app
-
-    export DOCBOOKDIR=/usr/local/Cellar/docbook-xsl/1.78.1/docbook-xsl/html
+    export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$MATLAB_HOME/bin/maci64
 else
     export LD_LIBRARY_PATH=$ISMRMRD_HOME/lib:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=$GADGETRON_HOME/lib:$LD_LIBRARY_PATH
