@@ -29,6 +29,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 
+Plugin 'mattn/flappyvird-vim'
+
 Plugin 'fatih/vim-go.git'
 Plugin 'rust-lang/rust.vim'
 Plugin 'plasticboy/vim-markdown'
@@ -326,6 +328,9 @@ nnoremap <silent> p p`]
 
 " prevent command window from accidentally opening
 map q: :q
+
+" toggle relative line numbers with Ctrl+n
+nmap <C-N> :setlocal relativenumber!<CR>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
