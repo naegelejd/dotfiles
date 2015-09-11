@@ -10,7 +10,14 @@ ZSH_THEME="naegelejd"
 # ZSH aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
-alias ppjson="python -mjson.tool"
+alias when='stat -f "Accessed: %Sa%nModified: %Sm%nCreated:  %Sc%nBorn:     %SB"'
+function sizes {
+    if [ "$#" -lt 1 ]; then
+        du -s ./* | sort -n
+    else
+        test -d "$1" && du -s "$1"/* | sort -n || du -sh "$1"
+    fi
+}
 
 # Disabled:
 # CASE_SENSITIVE="true"
