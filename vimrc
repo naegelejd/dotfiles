@@ -28,6 +28,9 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
+
+Plugin 'junegunn/vim-easy-align'
 
 Plugin 'mattn/flappyvird-vim'
 
@@ -331,6 +334,9 @@ map q: :q
 
 " toggle relative line numbers with Ctrl+n
 nmap <C-N> :setlocal relativenumber!<CR>
+
+" enter interactive alignment mode
+vmap <Enter> <Plug>(EasyAlign)
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
