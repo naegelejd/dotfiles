@@ -33,9 +33,9 @@ Plugin 'mattn/flappyvird-vim'
 
 Plugin 'fatih/vim-go.git'
 Plugin 'rust-lang/rust.vim'
+Plugin 'dag/vim2hs'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'killphi/vim-ebnf.git'
-Plugin 'raichoo/haskell-vim'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'andreimaxim/vim-io.git'
 Plugin 'lemon.vim'
@@ -99,7 +99,7 @@ set tags=./tags;$HOME
 " set smartindent   " (Prefer filetype indent)
 " set cindent       " (Prefer filetype indent)
 set formatoptions=tcroqnlj
-set cinoptions=:0,l1,N-s,t0,+2*N
+set cinoptions=:0,l1,N-s,g-s,t0,+2*N
 
 set smarttab      " Not necessary since I'm not explicitly using hard tabs
 set expandtab     " convert tabs to spaces
