@@ -8,6 +8,7 @@
 [core]
 	ignorecase = true
 	editor = vim
+	excludesfile = /Users/naegelejd/.gitignore-global
 [alias]
 	st = status
 	co = checkout
