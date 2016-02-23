@@ -8,6 +8,9 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh_custom
 ZSH_THEME="naegelejd"
 
 # ZSH aliases
+alias v=vim
+alias vi=vim
+# OSX: alias tar=gtar
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias when='stat -f "Accessed: %Sa%nModified: %Sm%nCreated:  %Sc%nBorn:     %SB"'

@@ -37,7 +37,10 @@ Plugin 'mattn/flappyvird-vim'
 Plugin 'fatih/vim-go.git'
 Plugin 'rust-lang/rust.vim'
 Plugin 'dag/vim2hs'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
+"Plugin 'plasticboy/vim-markdown'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'killphi/vim-ebnf.git'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'andreimaxim/vim-io.git'
@@ -101,7 +104,8 @@ set tags=./tags;$HOME
 
 " set smartindent   " (Prefer filetype indent)
 " set cindent       " (Prefer filetype indent)
-set formatoptions=tcroqnlj
+set formatoptions=tcroqnl
+silent! set formatoptions+=j " j is fairly new
 set cinoptions=:0,l1,N-s,g-s,t0,+2*N
 
 set smarttab      " Not necessary since I'm not explicitly using hard tabs
@@ -149,6 +153,10 @@ let g:go_fmt_fail_silently = 1  " don't pop up quickfix window
 """"""""""""""""""""""""""""""" vim-markdown """""""""""""""""""""""""""""""""
 
 let g:vim_markdown_folding_disabled=1
+
+""""""""""""""""""""""""""""""" vim-pandoc-syntax """""""""""""""""""""""""""""""""
+
+let g:pandoc#syntax#conceal#use=0 " conceals are annoying
 
 """"""""""""""""""""""""""""""" Supertab """""""""""""""""""""""""""""""""""""
 
