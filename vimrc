@@ -15,7 +15,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 Plugin 'tomtom/tlib_vim'
