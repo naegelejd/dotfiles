@@ -104,8 +104,8 @@ export VIRTUALENVWRAPPER_PYTHON=python2.7
 export WORKON_HOME=$HOME/.venvs
 
 # Go
-export GOPATH=$HOME
-export GOBIN=$HOME/bin
+export GOPATH=$HOME/local
+export GOBIN=$GOPATH/bin
 export PATH=$GOROOT/bin:$GOBIN:$PATH
 
 # Rust
@@ -117,14 +117,13 @@ alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
 alias valgrindfull="valgrind --dsymutil=yes --leak-check=full"
 alias clang++11="clang++ -std=c++11 -stdlib=libc++"
 
-# Afni
-export PATH=$PATH:$HOME/abin
-export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$HOME/abin
-
-source $HOME/.ismrmrdrc
-
 export PATH="$PATH:$HOME/.gem/ruby/2.2.0/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#function targz {
+#    _size=$(du -sb "$2" | cut -f 1)
+#    tar cf - "$2" | pv -p -s $_size | gzip -c > $1
+#}
 
 # added by travis gem
 [ -f /Users/naegelejd/.travis/travis.sh ] && source /Users/naegelejd/.travis/travis.sh
