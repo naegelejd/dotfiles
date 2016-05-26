@@ -56,8 +56,6 @@ $HOME/.cabal/bin:\
 /usr/bin:"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Homebrew
-    export HOMEBREW_GITHUB_API_TOKEN=ee972819452fa6e7469aa527d4b306781f77b6f5
     # Some tools like GHC need Homebrew dyld path explicitly defined
     export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
 
