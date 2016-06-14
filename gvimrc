@@ -11,6 +11,8 @@ if has("gui_macvim") || has("gui_mac")
     set guifont=Menlo:h12
 elseif has("gui_gtk2")
     set guifont=Deja\ Vu\ Sans\ Mono\ 10
+elseif has("gui_win32")
+    set guifont=Inconsolata:h12
 endif
 
 """"""" GUI """"""""

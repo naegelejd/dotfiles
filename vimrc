@@ -328,6 +328,10 @@ nnoremap Y y$
 " clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
 
+" allows for one-character insertion with only 2 keypresses
+nnoremap <Space> i_<Esc>r
+nnoremap <Backspace> a_<Esc>r
+
 " visual shifting (does not exit VISUAL MODE)
 vnoremap < <gv
 vnoremap > >gv
