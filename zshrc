@@ -42,6 +42,9 @@ source $ZSH/oh-my-zsh.sh
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 
+# allow for passing '*' in arguments when the glob doesn't match
+unsetopt NOMATCH
+
 # User configuration
 
 export PATH="\
