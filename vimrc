@@ -143,8 +143,14 @@ set virtualedit+=block  " Allow block selection of shape
 
 set t_Co=256        " Set number of colors to 256 by default
 
+set diffopt+=vertical
+
 let mapleader = ','     " The default is '\' but many people prefer ','
 
+
+"""""""""""""""""""""""""""""""""" SnipMate """"""""""""""""""""""""""""""""""""
+
+let g:snipMate = { 'snippet_version' : 1 }
 
 """""""""""""""""""""""""""""""""" vim-go """"""""""""""""""""""""""""""""""""
 
@@ -289,7 +295,7 @@ au BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 """""""" Filetype-specific """"""""
 
 au FileType make,go setlocal softtabstop=8 shiftwidth=8 noexpandtab
-au FileType html,markdown setlocal softtabstop=2 shiftwidth=2
+au FileType html,javascript,css,markdown setlocal softtabstop=2 shiftwidth=2
 
 au FileType go setlocal nolist
 

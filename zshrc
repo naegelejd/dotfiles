@@ -25,7 +25,7 @@ function sizes {
 # Disabled:
 # CASE_SENSITIVE="true"
 # ENABLE_CORRECTION="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"      # speeds up ZSH in large repos
+DISABLE_UNTRACKED_FILES_DIRTY="true"      # speeds up ZSH in large repos
 
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -59,15 +59,11 @@ $HOME/.cabal/bin:\
 /usr/bin:"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Some tools like GHC need Homebrew dyld path explicitly defined
-    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
+    # Homebrew Python
+    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
     # MacTex
     export PATH=$PATH:/usr/texbin
-
-    # X11 (for AFNI?)
-    export PATH=$PATH:/opt/X11/bin
-    export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/X11/lib
 
     # If some fancy commands exist, print a fancy welcome!
     exists() { type $1 > /dev/null 2>&1 }
@@ -111,7 +107,6 @@ export PATH=$GOROOT/bin:$GOBIN:$PATH
 
 # Rust
 export RUST_HOME=/usr/local/rust
-export DYLD_FALLBACK_LIBRARY_PATH=$RUST_HOME/lib
 export PATH=$RUST_HOME/bin:$PATH
 
 alias indent="indent -nfbs -di4 -i4 -npsl -ta -nut"
@@ -121,6 +116,8 @@ alias clang++11="clang++ -std=c++11 -stdlib=libc++"
 export PATH="$PATH:$HOME/.gem/ruby/2.2.0/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-darwin"
+
 #function targz {
 #    _size=$(du -sb "$2" | cut -f 1)
 #    tar cf - "$2" | pv -p -s $_size | gzip -c > $1
@@ -128,3 +125,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # added by travis gem
 [ -f /Users/naegelejd/.travis/travis.sh ] && source /Users/naegelejd/.travis/travis.sh
+
+#vmwareDir="/Applications/VMware Fusion.app/Contents/Library"
+E[ -d "$vmwareDir" ] && export PATH=$PATH:"$vmwareDir"
+
+#export PATH="$PATH:$HOME/anaconda2/bin"
+#export PATH="$PATH:/usr/local/anaconda3/bin"
