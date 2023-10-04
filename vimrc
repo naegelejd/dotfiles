@@ -5,58 +5,74 @@ endif
 
 set nocompatible        " Use Vim defaults
 
-filetype off
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 
-Plugin 'gmarik/Vundle.vim'
+Plug 'dense-analysis/ale'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'majutsushi/tagbar'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'vim-airline/vim-airline'
+Plug 'kuznetsss/shswitch'
+Plug 'bfrg/vim-cpp-modern'
+Plug 'tommcdo/vim-exchange'
 
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+call plug#end()
 
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-repeat'
+"filetype off
+"set runtimepath+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 
-Plugin 'junegunn/vim-easy-align'
+"Plugin 'gmarik/Vundle.vim'
 
-Plugin 'mattn/flappyvird-vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'ervandew/supertab'
+"Plugin 'scrooloose/syntastic.git'
+"Plugin 'majutsushi/tagbar'
+""Plugin 'Valloric/YouCompleteMe'
+"Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
-Plugin 'fatih/vim-go.git'
-Plugin 'rust-lang/rust.vim'
-Plugin 'dag/vim2hs'
-Plugin 'derekwyatt/vim-scala'
-"Plugin 'plasticboy/vim-markdown'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'killphi/vim-ebnf.git'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'andreimaxim/vim-io.git'
-Plugin 'lemon.vim'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'garbas/vim-snipmate'
+"Plugin 'honza/vim-snippets'
 
-Plugin 'tomasr/molokai'
-Plugin 'nanotech/jellybeans.vim.git'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'sonoma.vim'
+"Plugin 'bling/vim-airline'
+"Plugin 'tpope/vim-commentary'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-abolish'
+"Plugin 'tpope/vim-repeat'
 
-Plugin 'naegelejd/vim-abbreviations'
-Plugin 'naegelejd/luci', {'rtp': 'etc/vim/'}
-Plugin 'naegelejd/nolli', {'rtp': 'etc/vim/'}
-Plugin 'naegelejd/vim-swig'
+"Plugin 'junegunn/vim-easy-align'
 
-call vundle#end()
+"Plugin 'mattn/flappyvird-vim'
+
+"Plugin 'fatih/vim-go.git'
+"Plugin 'rust-lang/rust.vim'
+"Plugin 'dag/vim2hs'
+"Plugin 'derekwyatt/vim-scala'
+""Plugin 'plasticboy/vim-markdown'
+"Plugin 'vim-pandoc/vim-pandoc'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'killphi/vim-ebnf.git'
+"Plugin 'JuliaLang/julia-vim'
+"Plugin 'andreimaxim/vim-io.git'
+"Plugin 'lemon.vim'
+
+"Plugin 'tomasr/molokai'
+"Plugin 'nanotech/jellybeans.vim.git'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'sonoma.vim'
+
+"Plugin 'naegelejd/vim-abbreviations'
+"Plugin 'naegelejd/luci', {'rtp': 'etc/vim/'}
+"Plugin 'naegelejd/nolli', {'rtp': 'etc/vim/'}
+"Plugin 'naegelejd/vim-swig'
+
+"call vundle#end()
 
 filetype plugin indent on   " Filetype recognition
 
